@@ -18,6 +18,16 @@ public class Nodo {
         bal = 0;
         izq = der = null;
     }
+    public int nodosCompletos(Nodo n) {
+        if (n == null) {
+            return 0;
+        } else {
+            if (n.izq != null && n.der != null) {
+                return nodosCompletos(n.izq) + nodosCompletos(n.der) + 1;
+            }
+            return nodosCompletos(n.izq) + nodosCompletos(n.der);
+        }
+    }
     
     
 }
