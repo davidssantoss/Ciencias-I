@@ -17,20 +17,36 @@
   <form class="formulario" action="index.html" method="post">
     <label for="etqNum"  class="etq">Digite la cantidad de numeros a crear en el arreglo</label>
     <input type="text" id="cant" class="form-text" placeholder="Numeros del arreglo a crear">
-    <label for="etqArray"  class="etq">Arreglo de numeros</label>
-    <input type="text" id="numCreados" class="form-text" placeholder="Numeros generados">
-    <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados mejor caso </label>
-    <input type="text" id="numOrd" class="form-text" placeholder="Arreglo de numeros ordenados">
-    <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados peor caso </label>
-    <input type="text" id="numOrd2" class="form-text" placeholder="Arreglo de numeros ordenados">
-    <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados caso promedio </label>
-    <input type="text" id="numOrd3" class="form-text" placeholder="Arreglo de numeros ordenados">
-    <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
-    <input type="text" id="cantOE" class="form-text" placeholder="Cantidad de operaciones elementales">
-    <label for="etqET" class="etq">Por ecuacion temporal</label>
-    <input type="text" id="ecu" class="form-text" placeholder="Valor de la Ecuacion">
 
-    <input type="button" class="form-btn" onclick="burbujaOrden()" value="GENERAR">
+    <!-- Promedio caso -->
+    <label for="etqArray"  class="etq">Arreglo de numeros CASO PROMEDIO</label>
+    <input type="text" id="numCreadosPR" class="form-text" placeholder="Numeros generados">
+    <label for="etqOE" class="etq">Por contador de operaciones elementales CASO PROMEDIO</label>
+    <input type="text" id="cantOEPR" class="form-text" placeholder="Cantidad de operaciones elementales">
+    <label for="etqET" class="etq">Por ecuacion temporal CASO PROMEDIO</label>
+    <input type="text" id="ecuPR" class="form-text" placeholder="Valor de la Ecuacion">
+    <!-- Peor caso -->
+    <label for="etqArray"  class="etq">Arreglo de numeros PEOR CASO</label>
+    <input type="text" id="numCreadosPE" class="form-text" placeholder="Numeros generados">
+    <label for="etqOE" class="etq">Por contador de operaciones elementales PEOR CASO</label>
+    <input type="text" id="cantOE" class="form-text" placeholder="Cantidad de operaciones elementales">
+    <label for="etqET" class="etq">Por ecuacion temporal PEOR CASO</label>
+    <input type="text" id="ecu" class="form-text" placeholder="Valor de la Ecuacion">
+    <!-- Mejor caso -->
+    </tr>
+    <label for="etqArray"  class="etq">Arreglo de numeros MEJOR CASO</label>
+    <input type="text" id="numCreadosME" class="form-text" placeholder="Numeros generados">
+    <label for="etqOE" class="etq">Por contador de operaciones elementales MEJOR CASO</label>
+    <input type="text" id="cantOEME" class="form-text" placeholder="Cantidad de operaciones elementales">
+    <label for="etqET" class="etq">Por ecuacion temporal MEJOR CASO</label>
+    <input type="text" id="ecuME" class="form-text" placeholder="Valor de la Ecuacion">
+
+    <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados </label>
+    <input type="text" id="numOrd" class="form-text" placeholder="Arreglo de numeros ordenados">
+    <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados CASO PROMEDIO</label>
+    <input type="text" id="numOrdPR" class="form-text" placeholder="Arreglo de numeros ordenados">
+
+    <input type="button" class="form-btn" onclick="hacerTodo()" value="GENERAR">
   </form>
 </div>
 

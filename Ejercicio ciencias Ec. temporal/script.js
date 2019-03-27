@@ -5,13 +5,13 @@ function burbujaOrden(){
     var random = Math.floor((Math.random() * 100) + 1);
     arregloA.push(random);
   }
-  document.getElementById('numCreados').value = arregloA;
+  document.getElementById('numCreadosPR').value = arregloA;
   var c = 1;
   for (var j = 0; j < num - 1; j++) {
     c = c + 5;
 
     for (var k = j + 1; k < num; k++) {
-      c = c + 6;
+      c = c + 5;
 
       if (arregloA[j] < arregloA[k]) {
         var t = arregloA[j];
@@ -23,28 +23,59 @@ function burbujaOrden(){
     c = c + 1;
   }
   c = c + 2;
-  document.getElementById('numOrd').value = arregloA;
-  document.getElementById('cantOE').value = c;
-  document.getElementById('ecu').value =  (6*(num**2))-3;
-  //((num * (num - 1) - (num - 1) - (((num - 2) * (num - 1)) / 2)) * 12 + (6 * (num - 1) + 3);
+  document.getElementById('numOrdPR').value = arregloA;
+  document.getElementById('cantOEPR').value = c;
+  document.getElementById('ecuPR').value =  ( (17*(num**2)) + ((7*num) - 12) )/4;
 }
-/*
 
-function descendente(){
+function hacerTodo() {
+  ascendente();
+  descendente();
+  burbujaOrden();
+}
+
+function ascendente() { // Mejor caso obligado
   var num = document.getElementById('cant').value;
-  var arregloA = new Array(num);
-  for (var i = 0; i < num; i++) {
-    var x = 20;
-    x = x - i;
-    arregloA.push(x);
+  let arregloA = new Array();
+  for (var i = 0; i < num ; i++) {
+    arregloA.push(i);
   }
-  document.getElementById('numCreados').value = arregloA;
+  document.getElementById('numCreadosME').value = arregloA;
   var c = 1;
   for (var j = 0; j < num - 1; j++) {
     c = c + 5;
 
-    for (var k = j + 1; k <= num; k++) {
-      c = c + 6;
+    for (var k = j + 1; k < num; k++) {
+      c = c + 5;
+
+      if (arregloA[j] > arregloA[k]) {
+        var t = arregloA[j];
+        arregloA [j] = arregloA[k];
+        arregloA [k] = t;
+        c = c+7;
+      }
+    }
+    c = c + 1;
+  }
+  c = c + 2;
+  document.getElementById('cantOEME').value = c;
+  document.getElementById('ecuME').value = ((5*(num**2)) + ((7*num) - 6))/2;
+}
+
+
+function descendente() { // Peor caso obligado
+  var num = document.getElementById('cant').value;
+  let arregloA = new Array();
+  for (var i = num; i > 0 ; i--) {
+    arregloA.push(i);
+  }
+  document.getElementById('numCreadosPE').value = arregloA;
+  var c = 1;
+  for (var j = 0; j < num - 1; j++) {
+    c = c + 5;
+
+    for (var k = j + 1; k < num; k++) {
+      c = c + 5;
 
       if (arregloA[j] > arregloA[k]) {
         var t = arregloA[j];
@@ -58,6 +89,6 @@ function descendente(){
   c = c + 2;
   document.getElementById('numOrd').value = arregloA;
   document.getElementById('cantOE').value = c;
-  document.getElementById('ecu').value = ((num * (num - 1) - (num - 1) - (((num - 2) * (num - 1)) / 2)) * 12 + 6 * (num - 1) + 3);
+  document.getElementById('ecu').value = (6*(num**2))-3;
 
-}*/
+}
