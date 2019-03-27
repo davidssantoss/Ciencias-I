@@ -66,18 +66,19 @@ public class Ventana extends JFrame {
         }
         etqShowArr.setText(Arrays.toString(ArrNum));
         for (int i = 0; i < num - 1; i++) {
-            c = c + 5;
+            c += c + 5;
             for (int j = i + 1; j < num; j++) {
-                c = c + 5;
+                c += c + 5;
                 if (ArrNum[i] > ArrNum[j]) {
                     int t = ArrNum[i];
                     ArrNum[i] = ArrNum[j];
                     ArrNum[j] = t;
-                }
+                    c += c + 7;
+                }    
             }
-            c = c + 1;
+            c += c + 1;
         }
-        c = c + 2;
+        c += c + 2;
         etqShowArrOrd.setText(Arrays.toString(ArrNum) + " c: " + c);
         System.out.println(((num * (num - 1) - (num - 1) - ((num - 2) * (num - 1)) / 2) * 12 + 6 * (num - 1) + 3));
 
