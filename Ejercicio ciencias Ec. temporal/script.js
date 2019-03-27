@@ -13,7 +13,7 @@ function burbujaOrden(){
     for (var k = j + 1; k < num; k++) {
       c = c + 6;
 
-      if (arregloA[j] > arregloA[k]) {
+      if (arregloA[j] < arregloA[k]) {
         var t = arregloA[j];
         arregloA [j] = arregloA[k];
         arregloA [k] = t;
@@ -25,7 +25,8 @@ function burbujaOrden(){
   c = c + 2;
   document.getElementById('numOrd').value = arregloA;
   document.getElementById('cantOE').value = c;
-  document.getElementById('ecu').value = ((num * (num - 1) - (num - 1) - (((num - 2) * (num - 1)) / 2)) * 12 + 6 * (num - 1) + 3);
+  document.getElementById('ecu').value =  (6*(num**2))-3;
+  //((num * (num - 1) - (num - 1) - (((num - 2) * (num - 1)) / 2)) * 12 + (6 * (num - 1) + 3);
 }
 /*
 
