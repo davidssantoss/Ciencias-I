@@ -33,6 +33,7 @@ function hacerTodo() {
   descendente();
   burbujaOrden();
   seleccion();
+  insercion();
 }
 
 function ascendente() { // Mejor caso obligado
@@ -127,4 +128,30 @@ function seleccion(){
   document.getElementById('numOrd').value = arregloA;*/
   document.getElementById('cantOESel').value = c;
   document.getElementById('ecuSel').value = c;
+}
+
+function insercion() {
+  var num = document.getElementById('cant').value;
+  let arregloA = new Array();
+  var c = 1
+  arregloA[0] = -32767;
+  i = 2;
+  for (var k = num; k > 0 ; k--) {
+    arregloA.push(k);
+  }
+  console.log(arregloA);
+  while (i <= num) {
+    j = i - 1;
+    temp = arregloA[i];
+    while (temp < arregloA[j]) {
+      arregloA[j+1] = arregloA[j];
+      j = j - 1;
+    }
+    arregloA[j+1] = temp;
+    i = i + 1;
+    c = c + 5;
+  }
+  console.log(arregloA);
+  //document.getElementById('ecuSel').value = 8*((num / 2)*(num + 1) - num) + 12 * (num - 1) + 4;
+  console.log(8*((num / 2)*(num + 1) - num) + 12 * (num - 1) + 4);
 }
