@@ -46,6 +46,9 @@
 .form-text:focus{
   box-shadow: 0 0 10px 4px #34495e;
 }
+.formato{
+  color: #E60026;
+}
 .form-btn{
   float: right;
   border: 0;

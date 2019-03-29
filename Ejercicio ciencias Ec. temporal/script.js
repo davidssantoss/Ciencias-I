@@ -1,4 +1,4 @@
-function burbujaOrden(){
+function burbujaOrden(){ //Caso Proedio
   var num = document.getElementById('cant').value;
   var arregloA = new Array(num);
   for (var i = 1; i < num; i++) {
@@ -32,6 +32,7 @@ function hacerTodo() {
   ascendente();
   descendente();
   burbujaOrden();
+  seleccion();
 }
 
 function ascendente() { // Mejor caso obligado
@@ -90,5 +91,40 @@ function descendente() { // Peor caso obligado
   document.getElementById('numOrd').value = arregloA;
   document.getElementById('cantOE').value = c;
   document.getElementById('ecu').value = (6*(num**2))-3;
-
+  //seleccion insercion radix
+}
+function seleccion(){
+  var num = document.getElementById('cant').value;
+  var arregloA = new Array(num);
+  var t,i,j,x,N=num;
+  for(var j = 0; j < N; j++) {
+    arregloA[j]=N-j;
+  }
+  document.getElementById('numCreadosSel').value = arregloA;
+  var c=1;
+    for(var i = 0; i < N / 2.0; i++) { // N/2 ???
+      c = c + 6;
+      x = i;
+      for(j = i + 1;j < N - i; j++) { // N-i ????
+        c = c + 5;
+        if(arregloA[x] > arregloA[j]) {
+          x = j;
+          c = c + 1;
+        }
+      }
+    c = c + 1;
+    c = c + 1;
+    if(i!=x) {
+      c = c + 7;
+      t = arregloA[i];
+      arregloA[i] = arregloA[x];
+      arregloA[x] = t;
+    }
+  }
+  c = c + 2; /*
+  console.log(c);
+  console.log( (num * (num-2)/8) - (num*(num-2)/4) + 2 + num / 2 );
+  document.getElementById('numOrd').value = arregloA;*/
+  document.getElementById('cantOESel').value = c;
+  document.getElementById('ecuSel').value = c;
 }
