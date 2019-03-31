@@ -12,15 +12,31 @@
   text-align: center;
   color: #ddd;
 }
+.Ejercicio-seccion h3{
+  color: #FF0000;
+}
+.formEjer{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
 .border{
   width: 100px;
   height: 10px;
-  background: #34495e;
+  background: #111;
   margin: 40px auto;
+}
+.col{
+  flex: 33%;
+  padding: 5px;
+  max-width: 600px;
+  box-sizing: border-box;
 }
 
 .formulario{
-  max-width: 600px;
+  max-width: 1200px;
   margin: auto;
   padding: 0 10px;
   overflow: hidden;
@@ -35,7 +51,7 @@
   display: block;
   width: 100%;
   box-sizing: border-box;
-  margin: 16px 0;
+  margin: 10px 0;
   border: 0;
   background: #111;
   padding: 20px 40px;
@@ -46,9 +62,7 @@
 .form-text:focus{
   box-shadow: 0 0 10px 4px #34495e;
 }
-.formato{
-  color: #E60026;
-}
+
 .form-btn{
   float: right;
   border: 0;

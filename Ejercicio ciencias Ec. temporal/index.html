@@ -14,50 +14,101 @@
 
   <h1>Ciencias I</h1>
   <div class="border"></div>
+
   <form class="formulario" action="index.html" method="post">
-    <label for="etqSubt" class="formato">Digite el numero de arreglos<br></label><br>
+    <label for="etqSubt" class="etq">Digite el numero de arreglos<br></label><br>
     <label for="etqNum"  class="etq">Digite la cantidad de numeros a crear en el arreglo</label>
     <input type="text" id="cant" class="form-text" placeholder="Numeros del arreglo a crear">
+    <h3>Metodo burbuja<br></h3>
+    <div class="formEjer">
+      <div class="col">
+        <div class="table">
+          <!-- Promedio caso -->
+          <h3>Caso promedio<br></h3>
+          <label for="etqArray"  class="etq">Arreglo de numeros</label>
+          <input type="text" id="numCreadosPR" class="form-text" placeholder="Numeros generados">
+          <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
+          <input type="text" id="cantOEPR" class="form-text" placeholder="Cantidad de operaciones elementales">
+          <label for="etqET" class="etq">Por ecuacion temporal</label>
+          <input type="text" id="ecuPR" class="form-text" placeholder="Valor de la Ecuacion">
 
-    <!-- Promedio caso -->
-    <label for="etqSubt" class="formato">Caso promedio<br></label>
-    <label for="etqArray"  class="etq">Arreglo de numeros CASO PROMEDIO</label>
-    <input type="text" id="numCreadosPR" class="form-text" placeholder="Numeros generados">
-    <label for="etqOE" class="etq">Por contador de operaciones elementales CASO PROMEDIO</label>
-    <input type="text" id="cantOEPR" class="form-text" placeholder="Cantidad de operaciones elementales">
-    <label for="etqET" class="etq">Por ecuacion temporal CASO PROMEDIO</label>
-    <input type="text" id="ecuPR" class="form-text" placeholder="Valor de la Ecuacion">
-    <!-- Peor caso -->
-    <label for="etqSubt" class="formato">Peor caso<br></label>
-    <label for="etqArray"  class="etq">Arreglo de numeros PEOR CASO</label>
-    <input type="text" id="numCreadosPE" class="form-text" placeholder="Numeros generados">
-    <label for="etqOE" class="etq">Por contador de operaciones elementales PEOR CASO</label>
-    <input type="text" id="cantOE" class="form-text" placeholder="Cantidad de operaciones elementales">
-    <label for="etqET" class="etq">Por ecuacion temporal PEOR CASO</label>
-    <input type="text" id="ecu" class="form-text" placeholder="Valor de la Ecuacion">
-    <!-- Mejor caso -->
-    </tr>
-    <label for="etqSubt" class="formato">Mejor caso <br></label>
-    <label for="etqArray"  class="etq">Arreglo de numeros MEJOR CASO</label>
-    <input type="text" id="numCreadosME" class="form-text" placeholder="Numeros generados">
-    <label for="etqOE" class="etq">Por contador de operaciones elementales MEJOR CASO</label>
-    <input type="text" id="cantOEME" class="form-text" placeholder="Cantidad de operaciones elementales">
-    <label for="etqET" class="etq">Por ecuacion temporal MEJOR CASO</label>
-    <input type="text" id="ecuME" class="form-text" placeholder="Valor de la Ecuacion">
+        </div>
+      </div>
+       <div class="col">
+         <div class="table">
+           <!-- Peor caso -->
+           <h3>Peor caso<br></h3>
+           <label for="etqArray"  class="etq">Arreglo de numeros</label>
+           <input type="text" id="numCreadosPE" class="form-text" placeholder="Numeros generados">
+           <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
+           <input type="text" id="cantOE" class="form-text" placeholder="Cantidad de operaciones elementales">
+           <label for="etqET" class="etq">Por ecuacion temporal</label>
+           <input type="text" id="ecu" class="form-text" placeholder="Valor de la Ecuacion">
 
-    <label for="etqSubt" class="formato">Arreglos ordenados<br></label>
+         </div>
+       </div>
+       <div class="col">
+         <div class="table">
+           <!-- Mejor caso -->
+           <h3>Mejor caso<br></h3>
+           <label for="etqArray"  class="etq">Arreglo de numeros</label>
+           <input type="text" id="numCreadosME" class="form-text" placeholder="Numeros generados">
+           <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
+           <input type="text" id="cantOEME" class="form-text" placeholder="Cantidad de operaciones elementales">
+           <label for="etqET" class="etq">Por ecuacion temporal</label>
+           <input type="text" id="ecuME" class="form-text" placeholder="Valor de la Ecuacion">
+
+         </div>
+       </div>
+       <div class="col">
+         <div class="table">
+           <h3>Metodo seleccion<br></h3>
+           <label for="etqArray"  class="etq">Arreglo de numeros </label>
+           <input type="text" id="numCreadosSel" class="form-text" placeholder="Numeros generados">
+           <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
+           <input type="text" id="cantOESel" class="form-text" placeholder="Cantidad de operaciones elementales">
+           <label for="etqET" class="etq">Por ecuacion temporal</label>
+           <input type="text" id="ecuSel" class="form-text" placeholder="Valor de la Ecuacion">
+
+         </div>
+       </div>
+       <div class="col">
+         <div class="table">
+           <h3>Metodo insercion<br></h3>
+           <label for="etqArray"  class="etq">Arreglo de numeros </label>
+           <input type="text" id="numCreadosIns" class="form-text" placeholder="Numeros generados">
+           <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
+           <input type="text" id="cantOEIns" class="form-text" placeholder="Cantidad de operaciones elementales">
+           <label for="etqET" class="etq">Por ecuacion temporal</label>
+           <input type="text" id="ecuIns" class="form-text" placeholder="Valor de la Ecuacion">
+
+         </div>
+       </div>
+       <div class="col">
+         <div class="table">
+           <h3>Metodo Radix<br></h3>
+           <label for="etqArray"  class="etq">Arreglo de numeros </label>
+           <input type="text" id="numCreadosRad" class="form-text" placeholder="Numeros generados">
+           <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
+           <input type="text" id="cantOERad" class="form-text" placeholder="Cantidad de operaciones elementales">
+           <label for="etqET" class="etq">Por ecuacion temporal</label>
+           <input type="text" id="ecuRad" class="form-text" placeholder="Valor de la Ecuacion">
+
+         </div>
+       </div>
+    </div>
+
+
+
+
+
+    <h3>Arreglos ordenados<br></h3>
     <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados </label>
     <input type="text" id="numOrd" class="form-text" placeholder="Arreglo de numeros ordenados">
     <label for="etqArrayOrd"  class="etq">Arreglo de numeros ordenados CASO PROMEDIO</label>
     <input type="text" id="numOrdPR" class="form-text" placeholder="Arreglo de numeros ordenados">
 
-    <label for="etqSubt" class="formato">Metodo de seleccion <br></label>
-    <label for="etqArray"  class="etq">Arreglo de numeros </label>
-    <input type="text" id="numCreadosSel" class="form-text" placeholder="Numeros generados">
-    <label for="etqOE" class="etq">Por contador de operaciones elementales</label>
-    <input type="text" id="cantOESel" class="form-text" placeholder="Cantidad de operaciones elementales">
-    <label for="etqET" class="etq">Por ecuacion temporal</label>
-    <input type="text" id="ecuSel" class="form-text" placeholder="Valor de la Ecuacion">
+
 
 
 

@@ -139,6 +139,7 @@ function insercion() {
   for (var k = num; k > 0 ; k--) {
     arregloA.push(k);
   }
+  document.getElementById('numCreadosIns').value = arregloA;
   console.log(arregloA);
   while (i <= num) {
     j = i - 1;
