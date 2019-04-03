@@ -35,6 +35,8 @@ function hacerTodo() {
   seleccionProm();
   seleccionPC();
   seleccionMC();
+  insercionProm();
+  insercionPC();
 }
 
 function BurbujaMC() { // Mejor caso obligado
@@ -253,4 +255,53 @@ function seleccionMC() {
   c = c + 3;
   document.getElementById('cantOESelMej').value = c;
   document.getElementById('ecuSelMej').value = 4 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (13 * (num - 2)) + 3;
+}
+function insercionProm() {
+  var num = document.getElementById('cant').value;
+  var arregloA = new Array(num);
+  for (var i = 1; i < num; i++) {
+    var random = Math.floor((Math.random() * 100) + 1);
+    arregloA.push(random);
+  }
+  document.getElementById('numCreadosInsProm').value = arregloA;
+  var c = 1;
+  for (var i = 1; i < num; i++) {
+    //c = c + 6;
+    var j = i - 1;
+    var t = arregloA[i];
+    while (j >= 0  && t < arregloA[j]) {
+      arregloA[j + 1] = arregloA[j];
+      j--;
+      c = c + 8;
+    }
+    arregloA[j + 1] = t;
+    c = c + 13;
+  }
+  c = c + 2;
+  document.getElementById('cantOEInsProm').value = c; //  ((num *(num - 1))/2)
+  document.getElementById('ecuInsProm').value = (6.5 * (((num - 2)*(num - 1))/2) + (13 * (num - 1)) + 2);
+}
+function insercionPC() {
+  var num = document.getElementById('cant').value;
+  let arregloA = new Array();
+  for (var i = num; i > 0 ; i--) {
+    arregloA.push(i);
+  }
+  document.getElementById('numCreadosInsPeor').value = arregloA;
+  var c = 1;
+  for (var i = 1; i < num; i++) {
+    //c = c + 6;
+    var j = i - 1;
+    var t = arregloA[i];
+    while (j >= 0  && t < arregloA[j]) {
+      arregloA[j + 1] = arregloA[j];
+      j--;
+      c = c + 8;
+    }
+    arregloA[j + 1] = t;
+    c = c + 13;
+  }
+  c = c + 2;
+  document.getElementById('cantOEInsPeor').value = c; //  ((num *(num - 1))/2)
+  document.getElementById('ecuInsPeor').value = (10 * (((num - 2)*(num - 1))/2) + (13 * (num - 1)) + 2);
 }
