@@ -15,6 +15,9 @@
 .Ejercicio-seccion h3{
   color: #FF0000;
 }
+.Ejercicio-seccion h4{
+  color: #ddd;
+}
 .formEjer{
   margin: auto;
   display: flex;
