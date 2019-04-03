@@ -29,14 +29,13 @@ function burbujaOrden(){ //Caso Proedio
 }
 
 function hacerTodo() {
-  ascendente();
-  descendente();
+  BurbujaMC();
+  BurbujaPC();
   burbujaOrden();
-  seleccion();
-  insercion();
+  seleccionProm();
 }
 
-function ascendente() { // Mejor caso obligado
+function BurbujaMC() { // Mejor caso obligado
   var num = document.getElementById('cant').value;
   let arregloA = new Array();
   for (var i = 0; i < num ; i++) {
@@ -65,7 +64,7 @@ function ascendente() { // Mejor caso obligado
 }
 
 
-function descendente() { // Peor caso obligado
+function BurbujaPC() { // Peor caso obligado
   var num = document.getElementById('cant').value;
   let arregloA = new Array();
   for (var i = num; i > 0 ; i--) {
@@ -94,6 +93,7 @@ function descendente() { // Peor caso obligado
   document.getElementById('ecu').value = (6*(num**2))-3;
   //seleccion insercion radix
 }
+/*
 function seleccion(){
   var num = document.getElementById('cant').value;
   var arregloA = new Array(num);
@@ -125,7 +125,7 @@ function seleccion(){
   c = c + 2; /*
   console.log(c);
   console.log( (num * (num-2)/8) - (num*(num-2)/4) + 2 + num / 2 );
-  document.getElementById('numOrd').value = arregloA;*/
+  document.getElementById('numOrd').value = arregloA;
   document.getElementById('cantOESel').value = c;
   document.getElementById('ecuSel').value = c;
 }
@@ -155,4 +155,37 @@ function insercion() {
   console.log(arregloA);
   //document.getElementById('ecuSel').value = 8*((num / 2)*(num + 1) - num) + 12 * (num - 1) + 4;
   console.log(8*((num / 2)*(num + 1) - num) + 12 * (num - 1) + 4);
+}*/
+
+function seleccionProm(){
+  var num = document.getElementById('cant').value;
+  var arregloA = new Array(num);
+  for (var i = 1; i < num; i++) {
+    var random = Math.floor((Math.random() * 100) + 1);
+    arregloA.push(random);
+  }
+  document.getElementById('numCreadosSelProm').value = arregloA;
+  var c = 1;
+  for(var i = 0; i < num -1; i++){
+    c = c + 11;
+    var temp = arregloA[i + 1];
+    var pos = i + 1;
+    for( var j = i + 1; j < num; j++){
+      if(temp > arregloA[j]){
+        temp = arregloA[j];
+        pos = j;
+      }
+      c = c + 5.5;
+    }
+    if (temp < arregloA[i]) {
+      x =  arregloA[i];
+      arregloA[i] = arregloA[pos];
+      arregloA[pos] = x;
+      c = c + 5.5;
+    }
+    c = c + 1;
+  }
+  c = c + 3;
+  document.getElementById('cantOESelProm').value = c;
+  document.getElementById('ecuSelProm').value = 5.5 * ((num * (num - 1)) - (num -1) - (((num - 2)*(num - 1))/2)) + (16.5 * (num - 2)) + 3;
 }
