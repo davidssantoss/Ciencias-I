@@ -37,6 +37,7 @@ function hacerTodo() {
   seleccionMC();
   insercionProm();
   insercionPC();
+  insercionMC();
 }
 
 function BurbujaMC() { // Mejor caso obligado
@@ -222,9 +223,9 @@ function seleccionPC() {
   }
   c = c + 3;
   document.getElementById('cantOESelPeor').value = c;
-  document.getElementById('ecuSelPeor').value = 7 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (20 * (num - 2)) + 3;
+  document.getElementById('ecuSelPeor').value = c;
+  //7 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (20 * (num - 2)) + 3;
 }
-
 function seleccionMC() {
   var num = document.getElementById('cant').value;
   let arregloA = new Array();
@@ -254,7 +255,8 @@ function seleccionMC() {
   }
   c = c + 3;
   document.getElementById('cantOESelMej').value = c;
-  document.getElementById('ecuSelMej').value = 4 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (13 * (num - 2)) + 3;
+  document.getElementById('ecuSelMej').value = c;
+  //4 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (13 * (num - 2)) + 2;
 }
 function insercionProm() {
   var num = document.getElementById('cant').value;
@@ -303,5 +305,31 @@ function insercionPC() {
   }
   c = c + 2;
   document.getElementById('cantOEInsPeor').value = c; //  ((num *(num - 1))/2)
-  document.getElementById('ecuInsPeor').value = (10 * (((num - 2)*(num - 1))/2) + (13 * (num - 1)) + 2);
+  document.getElementById('ecuInsPeor').value = c;
+  //(10 * (((num - 2)*(num - 1))/2) + (13 * (num - 1)) + 2);
+}
+function insercionMC() {
+  var num = document.getElementById('cant').value;
+  let arregloA = new Array();
+  for (var i = 0; i < num ; i++) {
+    arregloA.push(i);
+  }
+  document.getElementById('numCreadosInsMej').value = arregloA;
+  var c = 1;
+  for (var i = 1; i < num; i++) {
+    //c = c + 6;
+    var j = i - 1;
+    var t = arregloA[i];
+    while (j >= 0  && t < arregloA[j]) {
+      arregloA[j + 1] = arregloA[j];
+      j--;
+      //c = c + 8;
+    }
+    arregloA[j + 1] = t;
+    c = c + 13;
+  }
+  c = c + 2;
+  document.getElementById('cantOEInsMej').value = c;
+  document.getElementById('ecuInsMej').value = c;
+  //(13 * (num - 1)) + 1;
 }
