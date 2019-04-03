@@ -34,6 +34,7 @@ function hacerTodo() {
   burbujaOrden();
   seleccionProm();
   seleccionPC();
+  seleccionMC();
 }
 
 function BurbujaMC() { // Mejor caso obligado
@@ -220,4 +221,36 @@ function seleccionPC() {
   c = c + 3;
   document.getElementById('cantOESelPeor').value = c;
   document.getElementById('ecuSelPeor').value = 7 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (20 * (num - 2)) + 3;
+}
+
+function seleccionMC() {
+  var num = document.getElementById('cant').value;
+  let arregloA = new Array();
+  for (var i = 0; i < num ; i++) {
+    arregloA.push(i);
+  }
+  document.getElementById('numCreadosSelMej').value = arregloA;
+  var c = 1;
+  for(var i = 0; i < num - 1; i++){
+    c = c + 11;
+    var temp = arregloA[i + 1];
+    var pos = i + 1;
+    for( var j = i + 1; j < num; j++){
+      if(temp > arregloA[j]){
+        temp = arregloA[j];
+        pos = j;
+      }
+      c = c + 4;
+    }
+    if (temp < arregloA[i]) {
+      x =  arregloA[i];
+      arregloA[i] = arregloA[pos];
+      arregloA[pos] = x;
+      c = c + 2;
+    }
+    c = c + 1;
+  }
+  c = c + 3;
+  document.getElementById('cantOESelMej').value = c;
+  document.getElementById('ecuSelMej').value = 4 * ((num * (num - 1)) - (num - 1) - (((num - 2)*(num - 1))/2)) + (13 * (num - 2)) + 3;
 }
