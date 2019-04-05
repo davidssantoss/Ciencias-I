@@ -1,0 +1,38 @@
+*{
+  background: #333;
+  font-family: "montserrat",sans-serif;
+}
+.matriz{
+  width: 4%;
+  background: #111;
+  text-align: center;
+  color: #fff;
+  margin: 5px 7px;
+  border: 0;
+  border-radius: 5px;
+}
+.matrizGenerada{
+  padding: 25px, 50px;
+  color: #fff;
+  justify-content: center;
+  text-align: center;
+}
+.txtCreado{
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.btn{
+  color: #fff;
+  background: #34495e;
+  border: 0;
+  border-radius: 20px;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btn:hover{
+  background: #2980b9;
+}
