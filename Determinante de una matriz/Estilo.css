@@ -18,6 +18,14 @@
   justify-content: center;
   text-align: center;
 }
+.etq{
+  width: 4%;
+  background: #111;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
 .txtCreado{
   color: #fff;
   text-align: center;

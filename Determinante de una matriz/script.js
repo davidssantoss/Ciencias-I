@@ -19,6 +19,12 @@ function getMatriz() {
       }
     }
   }
+  var traza = 1 ;
+  for (i = 0;  i< n; i++) {
+    traza = traza * m[i][i];
+  }
+  document.getElementById('ResDeterminante').value = parseInt(traza);
+
 }
 function generarMatriz() {
   var n = document.getElementById('cantNum').value;
