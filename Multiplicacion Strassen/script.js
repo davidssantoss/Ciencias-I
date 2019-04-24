@@ -44,3 +44,11 @@ function determinar2n(num) {
     console.log("El numero no es de potencia 2", res);
   }
 }
+function relaciones() {
+  var mc1 = parseInt(document.getElementById('cantColM1').value);
+  var mf2 = parseInt(document.getElementById('cantFilM2').value);
+  if (mc1 != mf2) {
+    alert("¡¡ERROR!! Para multiplicar dos matrices, \n el numero de columnas de la primer matriz\ndebe ser igual al numero de las de la segunda matriz");
+
+  }
+}
