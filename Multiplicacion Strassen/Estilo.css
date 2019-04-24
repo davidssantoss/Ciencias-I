@@ -1,0 +1,40 @@
+*{
+  font-family: "Montserrat", sans-serif;
+  background: #333;
+}
+.col{
+  flex: 33%;
+  padding: 5px;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+.container{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.table{
+  color: #fff;
+  background: #111;
+}
+.matriz{
+  border: 0;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 8px 50px;
+}
+
+.btn{
+  color: #fff;
+  border: 0;
+  border-radius: 15px;
+  padding: 8px 50px;
+  background: #34495e;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btn:hover{
+  background: #2980b9;
+}

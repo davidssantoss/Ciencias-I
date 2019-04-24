@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="Estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col">
+        <div class="table" id="txtCreados">
+          <label> Digite el numero de filas</label><br>
+          <input type="text" id="cantFilM1" class="matriz"><br>
+          <label> Digite el numero de columnas</label><br>
+          <input type="text" id="cantColM1" class="matriz"><br><br>
+          <button type="button" class="btn" name="button" id="btnGen" onclick="generarMatriz()">Generar Matriz A</button>
+          <br><br>
+          <div class="Matrizgen1" id = "MG1">
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col">
+        <div class="table" id = "txtCreadosM2">
+          <label> Digite el numero de filas</label><br>
+          <input type="text" id="cantFilM2" class="matriz"><br>
+          <label> Digite el numero de columnas</label><br>
+          <input type="text" id="cantColM2" class="matriz"><br><br>
+          <button type="button" class="btn" name="button" id="btnGen2" onclick="generarMatriz()">Generar Matriz B</button>
+          <br><br>
+          <div class="Matrizgen2" id = "MG2">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </body>
+</html>
