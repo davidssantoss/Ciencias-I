@@ -19,8 +19,11 @@ function radixSort() {
     }
   }
   divisor = 1;
+  var c = 1;
   for (var i = 1; i < 6; i++) {//Cantidad de cifras de un numero
+    c = c + 4;
     for (var j = 0; j < num; j++) {
+      c = c + 21;
       temp = arregloA[j];
       temp = temp / divisor;
       //console.log("*divide cada pos del Array por " + divisor + ") " + temp);
@@ -34,17 +37,24 @@ function radixSort() {
     }
     m2 = 0;
     for (var k = 0; k < 10; k++) {
+      c = c + 8;
       indice = m[k][0] - 1;
       for (var j = 1; j <= indice; j++) {
+        c = c + 8;
         arregloA[m2] = m[k][j];
         m2 = m2 + 1;
       }
     }
+    c = c + 2;
     divisor = divisor * 10;
     for (var j = 0; j < 10; j++) {
+      c = c + 5;
       m[j][0] = 1;
     }
+    c = c + 2;
   }
   document.getElementById('numOrden').value = arregloA;
+  document.getElementById('OERad'). value = c;
+  document.getElementById('Ecu'). value = c;
 
 }
