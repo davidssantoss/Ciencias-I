@@ -175,6 +175,7 @@ function subdividirMatrices(matrizA, matrizB) {
   }
   //sumarMatrices(ma11, ma22);
   //sumarMatrices(mb11, mb22);
+  //restarMatrices(mb12, mb22);
 }
 
 function sumarMatrices(matrizX, matrizY) {
@@ -188,4 +189,18 @@ function sumarMatrices(matrizX, matrizY) {
       aux[i][j] = (matrizX[i][j] + matrizY[i][j]);
     }
   } 
+}
+
+function restarMatrices(matrizX, matrizY) {
+  var size = matrizX.length/2;  
+  var aux = new Array(size);
+  for (var i = 0; i < size; i++) {
+    aux[i] = new Array(size);
+  }
+  for (var i = 0; i < size; i++) {
+    for (var j = 0; j < size; j++) {
+      aux[i][j] = (matrizX[i][j] - matrizY[i][j]);
+      console.log("valor de la resta: " + aux);      
+    }
+  }
 }
