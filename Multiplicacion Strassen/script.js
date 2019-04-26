@@ -271,11 +271,13 @@ function subdividirMatrices(matrizA, matrizB, tm) {
     }
     aResult = sumarMatrices(ma11, ma22, aResult.length);
     bResult = sumarMatrices(mb11, mb22, bResult.length);
+    console.log(aResult);
+    console.log(bResult);
     console.log("valor de la suma de a: " + aResult);
     console.log("valor de la suma de b: " + bResult);
     console.log("Longitud de la suma de a: " + aResult.length);
     console.log("Longitud de la suma de b: " + bResult.length);
-    subdividirMatrices(aResult, bResult, aResult.lenght);
+    //subdividirMatrices(aResult, bResult, aResult.lenght);
     /*
 
     // M1
@@ -328,6 +330,7 @@ function sumarMatrices(matrizX, matrizY, tm) {
     for (var j = 0; j < size; j++) {
       aux[i][j] = (matrizX[i][j] + matrizY[i][j]);
       console.log("valor de aux" + aux);
+      console.log(aux);
     }
   }
   return aux;
