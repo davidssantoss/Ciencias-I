@@ -231,27 +231,40 @@ function subdividirMatrices(matrizA, matrizB) {
     // M1
     p1 = multiplicarMatrices2(sumarMatrices(ma11, ma22), sumarMatrices(mb11, mb22));
     console.log("valor de p1: " + p1);
+    console.log(p1);
     // M2
     p2 = multiplicarMatrices2(sumarMatrices(ma21, ma22), mb11);
     console.log("valor de p2: " + p2);
+    console.log(p2);
     // M3    
     p3 = multiplicarMatrices(ma11, restarMatrices(mb12, mb22));
     console.log("valor de p3: " + p3);
+    console.log(p3);
     // M4
     p4 = multiplicarMatrices(ma22, restarMatrices(mb21, mb11));
     console.log("valor de p4: " + p4);
+    console.log(p4);
     // M5
     p5 = multiplicarMatrices2(sumarMatrices(ma11, ma12), mb22);
     console.log("valor de p5: " + p5);
+    console.log(p5);
     // M6
     p6 = multiplicarMatrices2(restarMatrices(ma21, ma11), sumarMatrices(mb11, mb12));
     console.log("valor de p6: " + p6);
+    console.log(p6);
     // M7
     p7 = multiplicarMatrices2(restarMatrices(ma12, ma22), sumarMatrices(mb21, mb22));
     console.log("valor de p7: " + p7);
+    console.log(p7);
     // calcular c definitivamente
+    mc11 = sumarMatrices(sumarMatrices(p1, p7), restarMatrices(p4, p5));
+    console.log("valor de c11: " + mc11);
     mc12 = sumarMatrices(p3, p5);
     console.log("valor de c12: " + mc12);
+    mc21 = sumarMatrices(p2, p4);
+    console.log("valor de c21: " + mc21);
+    mc22 = sumarMatrices(restarMatrices(p1, p2), sumarMatrices(p3, p6));
+    console.log("valor de c22: " + mc22);
   }
 }
 
