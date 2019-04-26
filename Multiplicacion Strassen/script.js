@@ -102,62 +102,77 @@ function subdividirMatrices(matrizA, matrizB) {
   var n = parseInt(document.getElementById('cantFilM1').value);
   var sizeC = n;
   var tam = sizeC / 2;
-  var seccion = parseInt(Math.pow(2, tam));
-  //Submatrices de A, A11, A12, A21 y A22
-  var ma11 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    ma11[i] = new Array(seccion);
+  var matrizC = new Array(n);
+  for(var i = 0; i < n; i++){
+    matrizC[i] = new Array(n);
   }
-  var ma12 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    ma12[i] = new Array(seccion);
+  if(n == 1){
+    const divmatrizC = document.getElementById('matrizC');
+    const divmatrizGen3 = document.getElementById('MG3');
+    for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+        matrizC[i][j] = matrizA[i][j] * matrizB[i][j];
+        var input = document.createElement("input");
+        input.id = "texto3";
+        input.classList.add('matriz2');
+        divmatrizC.insertBefore(input, divmatrizGen3);         
+      }
+      var println = document.createElement("br");
+		  divmatrizC.insertBefore(println, divmatrizGen3);
+    }
+    document.getElementById('texto3').value = matrizC;
+
   }
-  var ma21 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    ma21[i] = new Array(seccion);
-  }
-  var ma22 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    ma22[i] = new Array(seccion);
-  }
-  //submatrices de B, B11, B12, B21 y B22
-  var mb11 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    mb11[i] = new Array(seccion);
-  }
-  var mb12 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    mb12[i] = new Array(seccion);
-  }
-  var mb21 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    mb21[i] = new Array(seccion);
-  }
-  var mb22 = new Array(seccion);
-  for(var i = 0; i < seccion; i++){
-    mb22[i] = new Array(seccion);
-  }
-  for (var i = 0; i < tam; i++){
-    for (var j = 0; j < tam; j++) {      
-      ma11[i][j] = matrizA[i][j];
-      ma12[i][j] = matrizA[i][j + tam];
-      ma21[i][j] = matrizA[i + tam][j];
-      ma22[i][j] = matrizA[i + tam][j + tam];
-      mb11[i][j] = matrizB[i][j];
-      mb12[i][j] = matrizB[i][j + tam];
-      mb21[i][j] = matrizB[i + tam][j];
-      mb22[i][j] = matrizB[i + tam][j + tam];
-      console.log("Matriz A11: " + ma11[i][j]);
-      console.log("Matriz A12: " + ma12[i][j]);
-      console.log("Matriz A21: " + ma21[i][j]);
-      console.log("Matriz A22: " + ma22[i][j]);
-      console.log("Matriz B11: " + ma11[i][j]);
-      console.log("Matriz B12: " + ma12[i][j]);
-      console.log("Matriz B21: " + ma21[i][j]);
-      console.log("Matriz B22: " + ma22[i][j]);
-      
+  else{
+    var seccion = parseInt(Math.pow(2, tam));
+    //Submatrices de A, A11, A12, A21 y A22
+    var ma11 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      ma11[i] = new Array(seccion);
+    }
+    var ma12 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      ma12[i] = new Array(seccion);
+    }
+    var ma21 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      ma21[i] = new Array(seccion);
+    }
+    var ma22 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      ma22[i] = new Array(seccion);
+    }
+    //submatrices de B, B11, B12, B21 y B22
+    var mb11 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      mb11[i] = new Array(seccion);
+    }
+    var mb12 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      mb12[i] = new Array(seccion);
+    }
+    var mb21 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      mb21[i] = new Array(seccion);
+    }
+    var mb22 = new Array(seccion);
+    for(var i = 0; i < seccion; i++){
+      mb22[i] = new Array(seccion);
+    }
+    for (var i = 0; i < tam; i++){
+      for (var j = 0; j < tam; j++) {      
+        ma11[i][j] = matrizA[i][j];
+        ma12[i][j] = matrizA[i][j + tam];
+        ma21[i][j] = matrizA[i + tam][j];
+        ma22[i][j] = matrizA[i + tam][j + tam];
+        mb11[i][j] = matrizB[i][j];
+        mb12[i][j] = matrizB[i][j + tam];
+        mb21[i][j] = matrizB[i + tam][j];
+        mb22[i][j] = matrizB[i + tam][j + tam];
+      }
     }
   }
+  
 
   
 }
