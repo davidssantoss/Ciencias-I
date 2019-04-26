@@ -196,25 +196,7 @@ function subdividirMatrices(matrizA, matrizB, tm) {
     console.log("El valor de B22: " + mb22);
     console.log(ma11);
     console.log(mb11);
-    // console.log(ma12);
-    // console.log(ma21);
-    // console.log(ma22);
-    // console.log(mb11);
-    // console.log(mb12);
-    // console.log(mb21);
-    // console.log(mb22);
-    // console.log("Longitud de A11: " + ma11.lenght);
-    // console.log("Longitud de A12: " + ma12.lenght);
-    // console.log("Longitud de A21: " + ma21.lenght);
-    // console.log("Longitud de A22: " + ma22.lenght);
-    // console.log("Longitud de B11: " + mb11.lenght);
-    // console.log("Longitud de B12: " + mb12.lenght);
-    // console.log("Longitud de B21: " + mb21.lenght);
-    // console.log("Longitud de B22: " + mb22.lenght);
-    //aResult y bResult
-
     /*
-
     // M1
     p1 = multiplicarMatrices2(sumarMatrices(ma11, ma22), sumarMatrices(mb11, mb22));
     console.log("valor de p1: " + p1);
@@ -308,17 +290,35 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     mc22[i] = new Array(tam);
   }
+  /*
+  //p1
   aResult = sumarMatrices(ma11, ma22, aResult.length);
   bResult = sumarMatrices(mb11, mb22, bResult.length);
-  console.log("valor de la suma de a: " + aResult);
-  console.log("valor de la suma de b: " + bResult);
-  console.log("Longitud de la suma de a: " + aResult.length);
-  console.log("Longitud de la suma de b: " + bResult.length);
-  var lenghtAr = aResult;
-  console.log(aResult);
-  console.log(bResult);
-  console.log("longitud: " + lenghtAr.length);
   subdividirMatrices(aResult, bResult, tam);
+  //p2
+  aResult = sumarMatrices(ma21, ma22, aResult.length);
+  subdividirMatrices(aResult, mb11, tam);
+  //p3
+  bResult = restarMatrices(mb12, mb22 , bResult.length);
+  p3 = subdividirMatrices(ma11, bResult, tam);
+  //p4
+  bResult = restarMatrices(mb21, mb11 , bResult.length);
+  subdividirMatrices(ma22, bResult, tam);
+  //p5
+  aResult = sumarMatrices(ma11, ma12 , aResult.length);
+  p5 = subdividirMatrices(aResult, mb22, tam);
+  //p6
+  aResult = restarMatrices(ma21, ma11, aResult.lenght);
+  bResult = sumarMatrices(mb11, mb12, bResult.lenght);
+  subdividirMatrices(aResult, bResult, tam);
+  //p7
+  aResult = restarMatrices(ma12, ma22 , aResult.length);
+  bResult = sumarMatrices(mb21, mb22 , bResult.length);
+  subdividirMatrices(aResult, bResult, tam);
+  //c11
+  //c12
+  sumarMatrices(p3, p5, p3. lenght);
+  */
 }
 
 function sumarMatrices(matrizX, matrizY, tm) {
