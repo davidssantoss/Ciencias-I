@@ -169,10 +169,23 @@ function subdividirMatrices(matrizA, matrizB) {
         mb12[i][j] = matrizB[i][j + tam];
         mb21[i][j] = matrizB[i + tam][j];
         mb22[i][j] = matrizB[i + tam][j + tam];
+        
       }
     }
   }
-  
+  //sumarMatrices(ma11, ma22);
+  //sumarMatrices(mb11, mb22);
+}
 
-  
+function sumarMatrices(matrizX, matrizY) {
+  var size = matrizX.length/2;  
+  var aux = new Array(size);
+  for (var i = 0; i < size; i++) {
+    aux[i] = new Array(size);
+  }
+  for (var i = 0; i < size; i++) {
+    for (var j = 0; j < size; j++) {
+      aux[i][j] = (matrizX[i][j] + matrizY[i][j]);
+    }
+  } 
 }
