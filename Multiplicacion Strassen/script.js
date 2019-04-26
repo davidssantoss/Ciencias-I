@@ -125,6 +125,15 @@ function subdividirMatrices(matrizA, matrizB) {
   }
   else{
     var seccion = parseInt(Math.pow(2, tam));
+    //Arreglos de resultados de A y B
+    var resA = new Array(tam);
+    for(var i = 0; i < tam; i++){
+      resA[i] = new Array(tam);
+    }
+    var resB = new Array(tam);
+    for(var i = 0; i < tam; i++){
+      resB[i] = new Array(tam);
+    }
     //Submatrices de A, A11, A12, A21 y A22
     var ma11 = new Array(seccion);
     for(var i = 0; i < seccion; i++){
@@ -172,10 +181,78 @@ function subdividirMatrices(matrizA, matrizB) {
         
       }
     }
+    //p1 a p7
+    var p1 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p1[i] = new Array(n);
+    }
+    var p2 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p2[i] = new Array(n);
+    }
+    var p3 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p3[i] = new Array(n);
+    }
+    var p4 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p4[i] = new Array(n);
+    }
+    var p5 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p5[i] = new Array(n);
+    }
+    var p6 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p6[i] = new Array(n);
+    }
+    var p7 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      p7[i] = new Array(n);
+    }
+    //subdivisiones de la matriz C
+    var mc11 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      mc11[i] = new Array(n);
+    }
+    var mc12 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      mc12[i] = new Array(n);
+    }
+    var mc21 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      mc21[i] = new Array(n);
+    }
+    var mc22 = new Array(n); 
+    for(var i = 0; i < n; i++){
+      mc22[i] = new Array(n);
+    }
+    
+    // M1
+    p1 = multiplicarMatrices2(sumarMatrices(ma11, ma22), sumarMatrices(mb11, mb22));
+    console.log("valor de p1: " + p1);
+    // M2
+    p2 = multiplicarMatrices2(sumarMatrices(ma21, ma22), mb11);
+    console.log("valor de p2: " + p2);
+    // M3    
+    p3 = multiplicarMatrices(ma11, restarMatrices(mb12, mb22));
+    console.log("valor de p3: " + p3);
+    // M4
+    p4 = multiplicarMatrices(ma22, restarMatrices(mb21, mb11));
+    console.log("valor de p4: " + p4);
+    // M5
+    p5 = multiplicarMatrices2(sumarMatrices(ma11, ma12), mb22);
+    console.log("valor de p5: " + p5);
+    // M6
+    p6 = multiplicarMatrices2(restarMatrices(ma21, ma11), sumarMatrices(mb11, mb12));
+    console.log("valor de p6: " + p6);
+    // M7
+    p7 = multiplicarMatrices2(restarMatrices(ma12, ma22), sumarMatrices(mb21, mb22));
+    console.log("valor de p7: " + p7);
+    // calcular c definitivamente
+    mc12 = sumarMatrices(p3, p5);
+    console.log("valor de c12: " + mc12);
   }
-  //sumarMatrices(ma11, ma22);
-  //sumarMatrices(mb11, mb22);
-  //restarMatrices(mb12, mb22);
 }
 
 function sumarMatrices(matrizX, matrizY) {
@@ -188,19 +265,52 @@ function sumarMatrices(matrizX, matrizY) {
     for (var j = 0; j < size; j++) {
       aux[i][j] = (matrizX[i][j] + matrizY[i][j]);
     }
-  } 
+  }
+  return aux; 
 }
 
 function restarMatrices(matrizX, matrizY) {
   var size = matrizX.length/2;  
-  var aux = new Array(size);
+  var aux2 = new Array(size);
   for (var i = 0; i < size; i++) {
-    aux[i] = new Array(size);
+    aux2[i] = new Array(size);
   }
   for (var i = 0; i < size; i++) {
     for (var j = 0; j < size; j++) {
-      aux[i][j] = (matrizX[i][j] - matrizY[i][j]);
-      console.log("valor de la resta: " + aux);      
+      aux2[i][j] = (matrizX[i][j] - matrizY[i][j]);
     }
   }
+  return aux2;
+}
+function multiplicarMatrices(matrizX, matrizY) {
+  var size = matrizX.length/2;
+  var aux2 = new Array(size);
+  for (var i = 0; i < size; i++) {
+    aux2[i] = new Array(size);
+  }
+  for (var i = 0; i < size; i++) {
+    for (var j = 0; j < size; j++) {
+      aux2[i][j] = 0;
+      for (var k = 0; k < size; k++) {
+        aux2[i][j] = aux2[i][j] + (matrizX[i][k] * matrizY[k][j]);                                         
+      }
+    }
+  }
+  return aux2;  
+}
+function multiplicarMatrices2(matrizX, matrizY) {
+  var size = matrizX.length;
+  var aux2 = new Array(size);
+  for (var i = 0; i < size; i++) {
+    aux2[i] = new Array(size);
+  }
+  for (var i = 0; i < matrizX.length; i++) {
+    for (var j = 0; j < matrizX.length; j++) {
+      aux2[i][j] = 0;
+      for (var k = 0; k < matrizX.length; k++) {
+        aux2[i][j] = aux2[i][j] + (matrizX[i][k] * matrizY[k][j]);                                         
+      }
+    }
+  }
+  return aux2;  
 }
