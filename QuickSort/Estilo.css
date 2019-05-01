@@ -8,14 +8,26 @@
   text-align: center;
   margin: 25px;
 }
+.formato h1{
+  color: #0984e3;
+}
 .etq{
   background: #333;
 }
 .txt{
   border: 0;
   border-radius: 8px;
-  padding: 5px 10px;
+  padding: 5px 1px;
   margin: 5px;
+  text-align: center;
+}
+.txt2{
+  border: 0;
+  border-radius: 8px;
+  width: 300px;
+  padding: 5px 200px;
+  margin: 5px;
+  text-align: center;
 }
 .btn{
   border: 0px;
