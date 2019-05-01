@@ -1,0 +1,31 @@
+*{
+  background: #111;
+  color: #fff;
+  font-family: "montserrat";
+}
+.formato{
+  background: #333;
+  text-align: center;
+  margin: 25px;
+}
+.etq{
+  background: #333;
+}
+.txt{
+  border: 0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+.btn{
+  border: 0px;
+  border-radius: 15px;
+  margin: 5px;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: 0.5s;
+  background: #34495e;
+}
+.btn:hover{
+  background: #2980b9;
+}

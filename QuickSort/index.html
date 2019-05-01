@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-<head>
-<meta charset="utf-8">
-<title></title>
-<link rel="stylesheet" href="Estilo.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="script.js"></script>
-</head>
-<body>
-</body>
+  <head>
+
+    <meta charset="utf-8">
+    <title>QuickSort</title>
+    <link rel="stylesheet" href="Estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div class="formato">
+      <label class="etq">Digite un numero para generar la cantidad de numeros aleatorios de un arreglo</label><br>
+      <input type="text" placeholder="digite un numero" id="cantNum"class="txt">
+      <button type="button" class="btn" onclick="generarRandom()">Generar</button><br>
+      <label class="etq">Numeros aleatorios generados</label><br>
+      <input type="text" class="txt" placeholder="numeros aleatorios"disabled id="numGen"><br>
+      <button type="button" class="btn">Ordenar</button><br>
+      <label class="etq">Numeros ordenados</label><br>
+      <input type="text" class="txt" placeholder="numeros ordenados"disabled id="numOrd">
+
+    </div>
+  </body>
 </html>
