@@ -103,9 +103,7 @@ function hacerTodo() {
 }
 function subdividirMatrices(matrizA, matrizB, tm) {
   var sizeC = tm;
-  console.log("Cantidad de columnas: " + sizeC);
-  var tam = sizeC / 2;
-  console.log("Dividor de columnas: " + tam);
+  var tam = parseInt(sizeC / 2);
   var matrizC = new Array(tm);
   for(var i = 0; i < tm; i++){
     matrizC[i] = new Array(tm);
@@ -129,7 +127,6 @@ function subdividirMatrices(matrizA, matrizB, tm) {
 
   }
   else{
-    console.log("el tamaño es: " + tam);
     var seccion = parseInt(Math.pow(2, tam));
     //Submatrices de A, A11, A12, A21 y A22
     var ma11 = new Array(tam);
@@ -168,14 +165,6 @@ function subdividirMatrices(matrizA, matrizB, tm) {
     }
     for (var i = 0; i < tam; i++){
       for (var j = 0; j < tam; j++) {
-        ma11[i][j] = 0;
-        ma12[i][j] = 0;
-        ma21[i][j] = 0;
-        ma22[i][j] = 0;
-        mb11[i][j] = 0;
-        mb12[i][j] = 0;
-        mb21[i][j] = 0;
-        mb22[i][j] = 0;
         ma11[i][j]  = matrizA[i][j];
         ma12[i][j] = matrizA[i][j + tam];
         ma21[i][j] = matrizA[i + tam][j];
@@ -197,6 +186,7 @@ function subdividirMatrices(matrizA, matrizB, tm) {
     // console.log(ma11);
     // console.log(mb11);
   }
+  // debugger;
   var aResult = new Array(tam);
   for(var i = 0; i < tam; i++){
     aResult[i] = new Array(tam);
