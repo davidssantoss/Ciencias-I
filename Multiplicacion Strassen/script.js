@@ -101,26 +101,19 @@ function hacerTodo() {
 }
 function subdividirMatrices(matrizA, matrizB, tm) {
   var tam = parseInt(tm / 2);
+  const divmatrizC = document.getElementById('matrizC');
+  const divmatrizGen3 = document.getElementById('MG3');
   var matrizC = new Array(tm);
   for(var i = 0; i < tm; i++){
     matrizC[i] = new Array(tm);
   }
   if(tm == 1){
-    const divmatrizC = document.getElementById('matrizC');
-    const divmatrizGen3 = document.getElementById('MG3');
     for (var i = 0; i < tm; i++) {
       for (var j = 0; j < tm; j++) {
         matrizC[i][j] = matrizA[i][j] * matrizB[i][j];
-        var input = document.createElement("input");
-        input.id = "texto3";
-        input.classList.add('matriz2');
-        divmatrizC.insertBefore(input, divmatrizGen3);
       }
-      var println = document.createElement("br");
-		  divmatrizC.insertBefore(println, divmatrizGen3);
     }
-    document.getElementById('texto3').value = matrizC;
-    return;
+    return matrizC;
   }
   //Submatrices de A, A11, A12, A21 y A22
   var ma11 = new Array(tam);
@@ -206,10 +199,59 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     p7[i] = new Array(tam);
   }
+  //almacenadores de p1 hasta p7
+  var p11 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p11[i] = new Array(tam);
+  }
+  var p12 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p12[i] = new Array(tam);
+  }
+  var p21 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p21[i] = new Array(tam);
+  }
+  var p31 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p31[i] = new Array(tam);
+  }
+  var p41 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p41[i] = new Array(tam);
+  }
+  var p51 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p51[i] = new Array(tam);
+  }
+  var p61 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p61[i] = new Array(tam);
+  }
+  var p62 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p62[i] = new Array(tam);
+  }
+  var p71 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p71[i] = new Array(tam);
+  }
+  var p72 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    p72[i] = new Array(tam);
+  }
   //subdivisiones de la matriz C
   var mc11 = new Array(tam);
   for(var i = 0; i < tam; i++){
     mc11[i] = new Array(tam);
+  }
+  var mc111 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    mc111[i] = new Array(tam);
+  }
+  var mc112 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    mc112[i] = new Array(tam);
   }
   var mc12 = new Array(tam);
   for(var i = 0; i < tam; i++){
@@ -223,35 +265,70 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     mc22[i] = new Array(tam);
   }
+  var mc221 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    mc221[i] = new Array(tam);
+  }
+  var mc222 = new Array(tam);
+  for(var i = 0; i < tam; i++){
+    mc222[i] = new Array(tam);
+  }
   // debugger;
   //p1
-  aResult = sumarMatrices(ma11, ma22, aResult.length);
-  bResult = sumarMatrices(mb11, mb22, bResult.length);
-  p1 = subdividirMatrices(aResult, bResult, tam);
+  p11 = sumarMatrices(ma11, ma22, p11.length);
+  p12 = sumarMatrices(mb11, mb22, p12.length);
+  p1 = subdividirMatrices(p11, p12, tam);
   //p2
-  aResult = sumarMatrices(ma21, ma22, aResult.length);
-  p2 = subdividirMatrices(aResult, mb11, tam);
+  p21 = sumarMatrices(ma21, ma22, p21.length);
+  p2 = subdividirMatrices(p21, mb11, tam);
   //p3
-  bResult = restarMatrices(mb12, mb22 , bResult.length);
-  p3 = subdividirMatrices(ma11, bResult, tam);
+  p31 = restarMatrices(mb12, mb22 , p31.length);
+  p3 = subdividirMatrices(ma11, p31, tam);
   //p4
-  bResult = restarMatrices(mb21, mb11 , bResult.length);
-  p4 = subdividirMatrices(ma22, bResult, tam);
+  p41 = restarMatrices(mb21, mb11 , p41.length);
+  p4 = subdividirMatrices(ma22, p41, tam);
   //p5
-  aResult = sumarMatrices(ma11, ma12 , aResult.length);
-  p5 = subdividirMatrices(aResult, mb22, tam);
+  p51 = sumarMatrices(ma11, ma12 , p51.length);
+  p5 = subdividirMatrices(p51, mb22, tam);
   //p6
-  aResult = restarMatrices(ma21, ma11, aResult.length);
-  bResult = sumarMatrices(mb11, mb12, bResult.length);
-  p6 = subdividirMatrices(aResult, bResult, tam);
+  p61 = restarMatrices(ma21, ma11, p61.length);
+  p62 = sumarMatrices(mb11, mb12, p62.length);
+  p6 = subdividirMatrices(p61, p62, tam);
   //p7
-  aResult = restarMatrices(ma12, ma22 , aResult.length);
-  bResult = sumarMatrices(mb21, mb22 , bResult.length);
-  p7 = subdividirMatrices(aResult, bResult, tam);
+  p71 = restarMatrices(ma12, ma22 , p71.length);
+  p72 = sumarMatrices(mb21, mb22 , p72.length);
+  p7 = subdividirMatrices(p71, p72, tam);
   //c11
+  mc111 = sumarMatrices(p1, p7, p1.length);
+  mc112 = restarMatrices(p4, p5, p4.length);
+  mc11 = sumarMatrices(mc111, mc112, mc111.length);
   //c12
   mc12 = sumarMatrices(p3, p5, p3.length);
-
+  //c21
+  mc21 = sumarMatrices(p2, p4, p2.length);
+  //c22
+  mc221 = restarMatrices(p1, p2, p1.length);
+  mc222 = sumarMatrices(p3, p6, p3.length);
+  mc22 = sumarMatrices(mc221, mc222, mc221.length);
+  console.log(mc11);
+  console.log(mc12);
+  console.log(mc21);
+  console.log(mc22);
+  for (var i = 0; i < tam; i++){
+    for (var j = 0; j < tam; j++) {
+      matrizC[i][j] = mc11[i][j];
+      matrizC[i][j + tam] = mc12[i][j];
+      matrizC[i + tam][j] = mc21[i][j];
+      matrizC[i + tam][j + tam] = mc22[i][j];
+      var input = document.createElement("input");
+      input.id = "texto3";
+      input.classList.add('matriz2');
+      divmatrizC.insertBefore(input, divmatrizGen3);
+      document.getElementById('texto3').value = matrizC;
+    }
+    var println = document.createElement("br");
+    divmatrizC.insertBefore(println, divmatrizGen3);
+  }
 }
 
 function sumarMatrices(matrizX, matrizY, tm) {
