@@ -314,6 +314,7 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   console.log(mc12);
   console.log(mc21);
   console.log(mc22);
+  // debugger;
   for (var i = 0; i < tam; i++){
     for (var j = 0; j < tam; j++) {
       matrizC[i][j] = mc11[i][j];
@@ -322,12 +323,13 @@ function subdividirMatrices(matrizA, matrizB, tm) {
       matrizC[i + tam][j + tam] = mc22[i][j];
       var input = document.createElement("input");
       input.id = "texto3";
-      input.classList.add('matriz2');
+      input.classList.add('matriz3');
       divmatrizC.insertBefore(input, divmatrizGen3);
       document.getElementById('texto3').value = matrizC;
     }
     var println = document.createElement("br");
     divmatrizC.insertBefore(println, divmatrizGen3);
+
   }
 }
 
