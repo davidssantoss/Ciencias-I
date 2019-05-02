@@ -35,6 +35,14 @@
   width: 10%;
   margin: 5px;
 }
+.matriz3{
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  width: 250px;
+  margin: 5px;
+}
 
 .btn{
   color: #fff;
