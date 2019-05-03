@@ -54,9 +54,21 @@ function multiplicar() {
   if (reglaMultiplicar() == true) {
     if((determinar2n(mf1) && determinar2n(mf2)) == true){
       console.log("Multiplicar");
+      getMatrizA();
+      getMatrizB();
+      subdividirMatrices(getMatrizA(), getMatrizB(), mf1);
     }
     else{
       console.log("Cómo hacerlo");
+      getMatrizA();
+      getMatrizB();
+      var mC = new Array(mf1);
+      for (var i = 0; i < mf1; i++) {
+        mC[i] = new Array(mf1);
+      }
+      mC = multiplicarMatrices2(getMatrizA(), getMatrizB());
+      imprimirMatriz(mC);
+
     }
   }else{
     alert("¡¡ERROR!! \n Para multiplicar dos matrices, \n el numero de columnas de la primer matriz\ndebe ser igual al numero de las de la segunda matriz");
@@ -100,6 +112,7 @@ function hacerTodo() {
 
 }
 function subdividirMatrices(matrizA, matrizB, tm) {
+  var c = 1;
   var tam = parseInt(tm / 2);
   const divmatrizC = document.getElementById('matrizC');
   const divmatrizGen3 = document.getElementById('MG3');
@@ -107,10 +120,11 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tm; i++){
     matrizC[i] = new Array(tm);
   }
+  c = 1;
   if(tm == 1){
     for (var i = 0; i < tm; i++) {
       for (var j = 0; j < tm; j++) {
-        matrizC[i][j] = matrizA[i][j] * matrizB[i][j];
+        matrizC[0][0] = matrizA[0][0] * matrizB[0][0];
       }
     }
     return matrizC;
@@ -149,6 +163,7 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     mb22[i] = new Array(tam);
   }
+  c += 8;
   for (var i = 0; i < tam; i++){
     for (var j = 0; j < tam; j++) {
       ma11[i][j]  = matrizA[i][j];
@@ -199,7 +214,8 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     p7[i] = new Array(tam);
   }
-  //almacenadores de p1 hasta p7
+  c += 9;
+    //almacenadores de p1 hasta p7 17
   var p11 = new Array(tam);
   for(var i = 0; i < tam; i++){
     p11[i] = new Array(tam);
@@ -240,7 +256,8 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     p72[i] = new Array(tam);
   }
-  //subdivisiones de la matriz C
+  c += 10;
+  //subdivisiones de la matriz C 10
   var mc11 = new Array(tam);
   for(var i = 0; i < tam; i++){
     mc11[i] = new Array(tam);
@@ -273,7 +290,8 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   for(var i = 0; i < tam; i++){
     mc222[i] = new Array(tam);
   }
-  // debugger;
+  c += 8;
+  // debugger; 8
   //p1
   p11 = sumarMatrices(ma11, ma22, p11.length);
   p12 = sumarMatrices(mb11, mb22, p12.length);
@@ -298,6 +316,7 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   p71 = restarMatrices(ma12, ma22 , p71.length);
   p72 = sumarMatrices(mb21, mb22 , p72.length);
   p7 = subdividirMatrices(p71, p72, tam);
+  c += 7;
   //c11
   mc111 = sumarMatrices(p1, p7, p1.length);
   mc112 = restarMatrices(p4, p5, p4.length);
@@ -310,26 +329,38 @@ function subdividirMatrices(matrizA, matrizB, tm) {
   mc221 = restarMatrices(p1, p2, p1.length);
   mc222 = sumarMatrices(p3, p6, p3.length);
   mc22 = sumarMatrices(mc221, mc222, mc221.length);
-  console.log(mc11);
-  console.log(mc12);
-  console.log(mc21);
-  console.log(mc22);
-  // debugger;
+  // console.log(mc11);
+  // console.log(mc12);
+  // console.log(mc21);
+  // console.log(mc22);
   for (var i = 0; i < tam; i++){
     for (var j = 0; j < tam; j++) {
       matrizC[i][j] = mc11[i][j];
       matrizC[i][j + tam] = mc12[i][j];
       matrizC[i + tam][j] = mc21[i][j];
       matrizC[i + tam][j + tam] = mc22[i][j];
+    }
+  }
+  document.getElementById('OE').value = c;
+  console.log(matrizC);
+  // debugger;
+  imprimirMatriz(matrizC);
+}
+function imprimirMatriz(matrix) {
+  var mf1 = parseInt(document.getElementById('cantFilM1').value);
+  const divmatrizC = document.getElementById('matrizC');
+  const divmatrizGen3 = document.getElementById('MG3');
+  for (var i = 0; i < mf1; i++){
+    for (var j = 0; j < mf1; j++) {
       var input = document.createElement("input");
-      input.id = "texto3";
+      input.id = "texto3" + i + j;
       input.classList.add('matriz3');
       divmatrizC.insertBefore(input, divmatrizGen3);
-      document.getElementById('texto3').value = matrizC;
+      console.log(matrix[i][j]);
+      document.getElementById('texto3' + i + j).value = matrix[i][j];
     }
     var println = document.createElement("br");
     divmatrizC.insertBefore(println, divmatrizGen3);
-
   }
 }
 
@@ -377,18 +408,27 @@ function multiplicarMatrices(matrizX, matrizY) {
   return aux2;
 }
 function multiplicarMatrices2(matrizX, matrizY) {
+  var c = 1;
   var size = matrizX.length;
   var aux2 = new Array(size);
   for (var i = 0; i < size; i++) {
     aux2[i] = new Array(size);
+    c += 5;
   }
   for (var i = 0; i < matrizX.length; i++) {
+    c += 5;
     for (var j = 0; j < matrizX.length; j++) {
       aux2[i][j] = 0;
+      c += 50;
       for (var k = 0; k < matrizX.length; k++) {
         aux2[i][j] = aux2[i][j] + (matrizX[i][k] * matrizY[k][j]);
+        c +=130;
       }
+      c += 1;
     }
+    c += 2;
   }
+  c += 3;
+  document.getElementById('OE').value = c;
   return aux2;
 }
