@@ -1,0 +1,18 @@
+*{
+  background: #111;
+  color: #fff;
+  font-family: "montserrat";
+}
+.grafo{
+  background: #333;
+  border-color: #eb2f06;
+  width: 800px;
+}
+.canvas{
+  margin: 10px;
+  background: #d1ccc0;
+}
+.btn{
+  border: 0px;
+
+}
