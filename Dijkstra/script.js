@@ -34,3 +34,8 @@ function oMousePos(canvas, evt) {
     y: Math.round(evt.clientY - ClientRect.top)
   }
 }
+/*
+@link
+http://w3.unpocodetodo.info/lab/dibujar-a-mano-alzada.php
+para mirar
+*/
