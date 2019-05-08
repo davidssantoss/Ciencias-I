@@ -14,5 +14,23 @@
 }
 .btn{
   border: 0px;
-
+}
+.matrizAdy{
+  background: #111;
+  width: 30px;
+  border: 0px;
+  border-radius: 4px;
+  text-align: center;
+  margin: 5px;
+}
+.Matriz{
+  text-align: center;
+  background: #333;
+  width: 800px;
+}
+.etq{
+  background: #111;
+  text-align: center;
+  width: 30px;
+  border: 0px;
 }
