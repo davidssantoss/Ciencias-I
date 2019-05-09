@@ -24,25 +24,35 @@ function oMousePos(canvas, evt) {
 }
 var count_click = 0;
 function count_click_add() {
-
   count_click += 1;
   console.log(count_click);
   return count_click;
 }
-function crearMatrizA() {
-  const divtextoCreados = document.getElementById('txtCreados');
-  const divmatrizGen1 = document.getElementById('MG1');
-  for (var i = 0; i < count_click + 1; i++) {
-		for (var j = 0; j < count_click + 1; j++) {
-      //input text de la matriz
-			var input = document.createElement("input");
-			input.id = "texto" + i + j;
-      input.classList.add('matrizAdy');
-      divtextoCreados.insertBefore(input, divmatrizGen1);
 
+function crearMatrizA() {
+  const tablaMatriz = document.getElementById('tablaMatriz');
+
+  for (var i = 0; i < count_click+1; i++) {
+    var tr = document.createElement("tr"); // Crea una nueva fila
+		for (var j = 0; j < count_click+1; j++) {
+      var td = document.createElement("td");
+      var label = document.createElement("label");
+      if (i == 0 && j > 0) { // En la primera iteración se refiere al titulo de las columnas
+        label.innerHTML = "c"+(j); // Inserta dentro del casilla un label
+      } else if (j == 0 && i > 0) { // En la primera iteración de la columna se refiere al titulo de la fila
+        label.innerHTML = "f"+(i); // Inserta dentro del casilla un label
+      } else if (j == 0 && i == 0) { // Vacio en la posición 0,0 de la tabla
+        label.innerHTML = "/";
+      } else {
+        var input = document.createElement("input");
+        input.id = "texto" + (i-1) + (j-1);
+        td.appendChild(input); // Inserta dentro del casilla un input
+      }
+
+      td.appendChild(label)
+      tr.appendChild(td); // Inserta la columna dentro de la fila
 		}
-		var println = document.createElement("br");
-		divtextoCreados.insertBefore(println, divmatrizGen1);
+    tablaMatriz.appendChild(tr); // Inserta la fila en la tabla
 	}
 }
 /*
