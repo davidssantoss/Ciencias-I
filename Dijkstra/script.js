@@ -34,17 +34,21 @@ function crearMatrizA() {
 
   for (var i = 0; i < count_click+1; i++) {
     var tr = document.createElement("tr"); // Crea una nueva fila
+    tr.classList.add('matrizAdy');
 		for (var j = 0; j < count_click+1; j++) {
       var td = document.createElement("td");
+      td.classList.add('td');
       var label = document.createElement("label");
+      label.classList.add('etq');
       if (i == 0 && j > 0) { // En la primera iteración se refiere al titulo de las columnas
-        label.innerHTML = "c"+(j); // Inserta dentro del casilla un label
+        label.innerHTML = j; // Inserta dentro del casilla un label
       } else if (j == 0 && i > 0) { // En la primera iteración de la columna se refiere al titulo de la fila
-        label.innerHTML = "f"+(i); // Inserta dentro del casilla un label
+        label.innerHTML = i; // Inserta dentro del casilla un label
       } else if (j == 0 && i == 0) { // Vacio en la posición 0,0 de la tabla
         label.innerHTML = "/";
       } else {
         var input = document.createElement("input");
+        input.classList.add('etq');
         input.id = "texto" + (i-1) + (j-1);
         td.appendChild(input); // Inserta dentro del casilla un input
       }

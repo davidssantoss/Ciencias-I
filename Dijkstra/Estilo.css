@@ -16,7 +16,7 @@
   border: 0px;
 }
 .matrizAdy{
-  background: #111;
+  background: #333;
   width: 30px;
   border: 0px;
   border-radius: 4px;
@@ -33,4 +33,12 @@
   text-align: center;
   width: 30px;
   border: 0px;
+}
+.tablaMatriz{
+  background: #333;
+  text-align: center;
+  border-color: #fff;
+}
+.td{
+  background: #1e272e;
 }
