@@ -1,7 +1,7 @@
 function generarGrafo(){
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext("2d");
-  var cw = canvas.width = 700,
+  var cw = canvas.width = 500,
     cx = cw / 2;
   var ch = canvas.height = 500,
     cy = ch / 2;
@@ -64,9 +64,9 @@ function setearValores() {
       if (i == j) {
         document.getElementById('texto' + i + j).value = 0;
         document.getElementById('texto' + i + j).disabled = 'True';
-      }else if (j == 0 && i > 0) {
+      }else if (i > j) {
         document.getElementById('texto' + i + j).value = 'x';
-        debugger;
+        document.getElementById('texto' + i + j).disabled = 'True';
       }
       else{
         document.getElementById('texto' + i + j).value = 99;

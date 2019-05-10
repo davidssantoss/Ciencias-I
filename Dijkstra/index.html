@@ -14,16 +14,21 @@
     <button type="button" id = "btn" onclick="getMatriz()">Dijkstra</button>
     <button type="button" id = "btn">Borrar Grafo</button>
     <br>
-    <div class="grafo">
-      <h2>Dibuje el grafo cada click sera un vertice</h2>
-      <canvas id="canvas" class="canvas" onclick="count_click_add()"></canvas>
-    </div>
-    <div class="Matriz" id = "txtCreados">
-      <h2>Matriz de adyacencia</h2>
-      <div id="tablaDiv" class="Matriz">
-        <table border="1" id="tablaMatriz" class="tablaMatriz"></table>
+    <div class="container">
+      <div class="columna">
+        <div class="grafo">
+          <h2>Dibuje el grafo cada click sera un vertice</h2>
+          <canvas id="canvas" class="canvas" onclick="count_click_add()"></canvas>
+        </div>
+      </div>
+      <div class="columna">
+        <div class="Matriz" id = "txtCreados">
+          <h2>Matriz de adyacencia</h2>
+          <div id="tablaDiv" class="Matriz">
+            <table border="1" id="tablaMatriz" class="tablaMatriz"></table>
+          </div>
+        </div>
       </div>
     </div>
-
   </body>
 </html>

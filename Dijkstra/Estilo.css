@@ -6,7 +6,7 @@
 .grafo{
   background: #333;
   border-color: #eb2f06;
-  width: 800px;
+  width: 510px;
 }
 .canvas{
   margin: 10px;
@@ -26,7 +26,16 @@
 .Matriz{
   text-align: center;
   background: #333;
-  width: 80%;
+}
+.container{
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+.columna{
+  width: 50%;
+  justify-content: center;
+  text-align: center;
 }
 .etq{
   background: #111;
