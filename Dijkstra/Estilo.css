@@ -38,6 +38,13 @@
   text-align: center;
 }
 .etq{
+  background: #d63031;
+  text-align: center;
+  width: 30px;
+  border: 0px;
+  color: #dfe6e9;
+}
+.etq2{
   background: #30336b;
   text-align: center;
   width: 30px;

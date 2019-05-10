@@ -92,7 +92,36 @@ function getMatriz() {
     }
   }
   console.log(matrizAdy);
+  caminoCorto(matrizAdy);
   return matrizAdy;
+}
+function caminoCorto(matriz) {
+  var padres = new Array(count_click);
+  var minimoValor = new Array(count_click);
+  var marcador = new Array(count_click);
+  // for (var i = 0; i < count_click; i++) {
+  //   marcador[i] = 1;
+  // }
+  for (var i = 0; i < count_click; i++) {
+    if (i == 0) {
+      marcador[i] = 1;
+    }else {
+      marcador[i] = 0;
+    }
+    for (var j = 0; j < count_click; j++) {
+      minimoValor[i] = matriz[i][0];
+    }
+  }
+}
+function buscarMin(arreglo) {
+  var min = arreglo[1];
+  for (var i = 0; i < arreglo.length; i++) {
+    if (min > arreglo[i]) {
+      min = arreglo[i];
+    }
+  }
+  console.log(min);
+  return min;
 }
 /*
 @link
