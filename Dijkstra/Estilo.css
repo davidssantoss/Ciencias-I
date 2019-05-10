@@ -33,13 +33,14 @@
   text-align: center;
   width: 30px;
   border: 0px;
-  color: #fff;
+  color: #f53b57;
 }
 .tablaMatriz{
   background: #333;
   text-align: center;
-  border-color: #fff;
+  border-color: #808e9b;
 }
 .td{
   background: #1e272e;
+  width: 15px;
 }

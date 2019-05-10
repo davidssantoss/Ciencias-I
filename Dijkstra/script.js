@@ -33,7 +33,7 @@ function crearMatrizA() {
 
   for (var i = 0; i < count_click+1; i++) {
     var tr = document.createElement("tr"); // Crea una nueva fila
-    tr.classList.add('matrizAdy');
+    tr.classList.add('td');
 		for (var j = 0; j < count_click+1; j++) {
       var td = document.createElement("td");
       td.classList.add('td');
@@ -47,11 +47,10 @@ function crearMatrizA() {
         label.innerHTML = "/";
       } else {
         var input = document.createElement("input");
-        input.classList.add('etq');
+        input.classList.add('matrizAdy');
         input.id = "texto" + (i-1) + (j-1);
         td.appendChild(input); // Inserta dentro del casilla un input
       }
-      // debugger;
       td.appendChild(label);
       tr.appendChild(td); // Inserta la columna dentro de la fila
 		}
@@ -65,6 +64,12 @@ function setearValores() {
       if (i == j) {
         document.getElementById('texto' + i + j).value = 0;
         document.getElementById('texto' + i + j).disabled = 'True';
+      }else if (j == 0 && i > 0) {
+        document.getElementById('texto' + i + j).value = 'x';
+        debugger;
+      }
+      else{
+        document.getElementById('texto' + i + j).value = 99;
       }
     }
   }
@@ -80,6 +85,7 @@ function getMatriz() {
       matrizAdy[i][j] = parseInt(document.getElementById(input).value);
     }
   }
+  console.log(matrizAdy);
   return matrizAdy;
 }
 /*
