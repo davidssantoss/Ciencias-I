@@ -86,7 +86,7 @@ function getMatriz() {
         matrizAdy[i][j] = parseInt(document.getElementById(input).value);
       } else if (i < j) {
         matrizAdy[i][j] = parseInt(document.getElementById(input).value);
-      }else if (i > j) {
+      }else{
         matrizAdy[i][j] = matrizAdy[j][i];
       }
     }
