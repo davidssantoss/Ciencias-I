@@ -84,8 +84,10 @@ function getMatriz() {
       var input = "texto" + i + j;
       if (i == j) {
         matrizAdy[i][j] = parseInt(document.getElementById(input).value);
-      } else if (i > 0) {
+      } else if (i < j) {
         matrizAdy[i][j] = parseInt(document.getElementById(input).value);
+      }else if (i > j) {
+        matrizAdy[i][j] = matrizAdy[j][i];
       }
     }
   }
