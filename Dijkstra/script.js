@@ -82,7 +82,11 @@ function getMatriz() {
   for (var i = 0; i < count_click; i++) {
     for (var j = 0; j < count_click; j++) {
       var input = "texto" + i + j;
-      matrizAdy[i][j] = parseInt(document.getElementById(input).value);
+      if (i == j) {
+        matrizAdy[i][j] = parseInt(document.getElementById(input).value);
+      } else if (i > 0) {
+        matrizAdy[i][j] = parseInt(document.getElementById(input).value);
+      }
     }
   }
   console.log(matrizAdy);
