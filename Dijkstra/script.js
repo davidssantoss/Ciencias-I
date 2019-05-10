@@ -25,7 +25,6 @@ function oMousePos(canvas, evt) {
 var count_click = 0;
 function count_click_add() {
   count_click += 1;
-  console.log(count_click);
   return count_click;
 }
 
@@ -52,12 +51,36 @@ function crearMatrizA() {
         input.id = "texto" + (i-1) + (j-1);
         td.appendChild(input); // Inserta dentro del casilla un input
       }
-
-      td.appendChild(label)
+      // debugger;
+      td.appendChild(label);
       tr.appendChild(td); // Inserta la columna dentro de la fila
 		}
     tablaMatriz.appendChild(tr); // Inserta la fila en la tabla
 	}
+  setearValores();
+}
+function setearValores() {
+  for (var i = 0; i < count_click; i++) {
+    for (var j = 0; j < count_click; j++) {
+      if (i == j) {
+        document.getElementById('texto' + i + j).value = 0;
+        document.getElementById('texto' + i + j).disabled = 'True';
+      }
+    }
+  }
+}
+function getMatriz() {
+  var matrizAdy = new Array(count_click);
+  for (var i = 0; i < count_click; i++) {
+    matrizAdy[i] = new Array(count_click);
+  }
+  for (var i = 0; i < count_click; i++) {
+    for (var j = 0; j < count_click; j++) {
+      var input = "texto" + i + j;
+      matrizAdy[i][j] = parseInt(document.getElementById(input).value);
+    }
+  }
+  return matrizAdy;
 }
 /*
 @link
