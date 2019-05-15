@@ -101,23 +101,25 @@ function caminoCorto() {
 }
 function dijkstra(matriz, N, minimo, padres, marcas) {
   var min, j, k, escogido;
-  for (j = 0; j < N; j++) {
-    minimo[j] = matriz[1][j];
+  // debugger;
+  for (j = 0; j < N - 1; j++) {
+    minimo[j] = matriz[0][j];
     marcas[j] = 0;
     padres[j] = 1;
   }
-  minimo[1] = 0;
-  padres[1] = 0;
-  marcas[1] = 1;
-  for (k = 2; k < N; k++) {
+  minimo[0] = 0;
+  padres[0] = 0;
+  marcas[0] = 1;
+  for (k = 2; k <= N; k++) {
     min = 32000;
-    for (j = 0; j <= N; j++) {
+    for (j = 1; j <= N; j++) {
       if (marcas[j] == 0 && minimo[j] < min) {
         min = minimo[j];
         escogido = j;
       }
     marcas[escogido] = 1;
-    for (j = 1; j < N; j++) {
+    for (j = 1; j <= N; j++) {
+      // console.log(matriz[escogido][j]);
       if (marcas[j] == 0 && (min + matriz[escogido][j] < minimo[j])) {
         minimo[j] = min + matriz[escogido][j];
         padres[j] = escogido;
