@@ -110,15 +110,15 @@ function dijkstra(matriz, N, minimo, padres, marcas) {
   minimo[0] = 0;
   padres[0] = 0;
   marcas[0] = 1;
-  for (k = 2; k <= N; k++) {
+  for (k = 1; k < N; k++) {
     min = 32000;
-    for (j = 1; j <= N; j++) {
+    for (j = 1; j < N; j++) {
       if (marcas[j] == 0 && minimo[j] < min) {
         min = minimo[j];
         escogido = j;
       }
     marcas[escogido] = 1;
-    for (j = 1; j <= N; j++) {
+    for (j = 1; j < N; j++) {
       // console.log(matriz[escogido][j]);
       if (marcas[j] == 0 && (min + matriz[escogido][j] < minimo[j])) {
         minimo[j] = min + matriz[escogido][j];
