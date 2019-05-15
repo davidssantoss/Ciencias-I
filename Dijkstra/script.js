@@ -1,4 +1,4 @@
-function generarGrafo(){
+ function generarGrafo(){
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext("2d");
   var cw = canvas.width = 500,
@@ -91,41 +91,47 @@ function getMatriz() {
       }
     }
   }
-  console.log(matrizAdy);
-  caminoCorto(matrizAdy);
   return matrizAdy;
 }
-function caminoCorto(matriz) {
+function caminoCorto() {
   var padres = new Array(count_click);
   var minimoValor = new Array(count_click);
   var marcador = new Array(count_click);
-  // for (var i = 0; i < count_click; i++) {
-  //   marcador[i] = 1;
-  // }
-  for (var i = 0; i < count_click; i++) {
-    if (i == 0) {
-      marcador[i] = 1;
-    }else {
-      marcador[i] = 0;
-    }
-    for (var j = 0; j < count_click; j++) {
-      minimoValor[i] = matriz[i][0];
-    }
-  }
+  dijkstra(getMatriz(), count_click, minimoValor, padres, marcador);
 }
-function buscarMin(arreglo) {
-  var min = arreglo[1];
-  for (var i = 0; i < arreglo.length; i++) {
-    if (min > arreglo[i]) {
-      min = arreglo[i];
+function dijkstra(matriz, N, minimo, padres, marcas) {
+  var min, j, k, escogido;
+  for (j = 0; j < N; j++) {
+    minimo[j] = matriz[1][j];
+    marcas[j] = 0;
+    padres[j] = 1;
+  }
+  minimo[1] = 0;
+  padres[1] = 0;
+  marcas[1] = 1;
+  for (k = 2; k < N; k++) {
+    min = 32000;
+    for (j = 0; j <= N; j++) {
+      if (marcas[j] == 0 && minimo[j] < min) {
+        min = minimo[j];
+        escogido = j;
+      }
+    marcas[escogido] = 1;
+    for (j = 1; j < N; j++) {
+      if (marcas[j] == 0 && (min + matriz[escogido][j] < minimo[j])) {
+        minimo[j] = min + matriz[escogido][j];
+        padres[j] = escogido;
+      }
+    }
     }
   }
-  console.log(min);
-  return min;
+  document.getElementById('mins').value = minimo;
+  document.getElementById('pad').value = padres;
+  document.getElementById('mar').value = marcas;
+
 }
 /*
 @link
 http://w3.unpocodetodo.info/lab/dibujar-a-mano-alzada.php
 para mirar
-enviar lo de musica al aardila807@gmail.com
 */
