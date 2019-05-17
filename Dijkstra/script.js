@@ -14,9 +14,9 @@
     ctx.translate(0, .5);
     ctx.lineTo(m.x, m.y);
     ctx.font = "20pt montserrat";
+    xCoord(m.x);
     ctx.fillText(count_click, m.x, m.y - 10);
     // ctx.stroke();
-    console.log(m.x, m.y);
     dibujarCoor(m.x, m.y);
   }, false);
 }
@@ -26,6 +26,13 @@ function oMousePos(canvas, evt) {
     x: Math.round(evt.clientX - ClientRect.left),
     y: Math.round(evt.clientY - ClientRect.top)
   }
+}
+function xCoord(x) {
+  var _x = new Array();
+  for (var i = 0; i < count_click; i++) {
+  _x[i] = x;
+  }
+  console.log(_x);
 }
 
 function dibujarCoor(x1, y1) {
@@ -134,7 +141,7 @@ function dijkstra(matriz, N, minimo, padres, marcas) {
         escogido = i;
       }
     marcas[escogido] = 1;
-    for (var l = 0; l <= N; l++) {
+    for (var l = 1; l <= N; l++) {
       // console.log(matriz[escogido][l]);
       if (marcas[l] == 0 && (min + matriz[escogido][l] < minimo[l])) {
         minimo[l] = min + matriz[escogido][l];
