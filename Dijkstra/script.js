@@ -11,7 +11,10 @@
   canvas.addEventListener('click', function(evt) {
     dibujar = true;
     var m = oMousePos(canvas, evt);
+    ctx.translate(0, .5);
     ctx.lineTo(m.x, m.y);
+    ctx.font = "20pt montserrat";
+    ctx.fillText(count_click, m.x, m.y - 10);
     ctx.stroke();
   }, false);
 }
