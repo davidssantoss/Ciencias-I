@@ -23,6 +23,11 @@
   text-align: center;
   margin: 5px;
 }
+.input{
+  border: 0px;
+  border-radius: 5px;
+  width: 70%;
+}
 .Matriz{
   text-align: center;
   background: #333;
