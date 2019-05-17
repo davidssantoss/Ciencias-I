@@ -15,7 +15,7 @@
     ctx.lineTo(m.x, m.y);
     ctx.font = "20pt montserrat";
     ctx.fillText(count_click, m.x, m.y - 10);
-    ctx.stroke();
+    // ctx.stroke();
   }, false);
 }
 function oMousePos(canvas, evt) {
