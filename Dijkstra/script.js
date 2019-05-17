@@ -16,6 +16,8 @@
     ctx.font = "20pt montserrat";
     ctx.fillText(count_click, m.x, m.y - 10);
     // ctx.stroke();
+    console.log(m.x, m.y);
+    dibujarCoor(m.x, m.y);
   }, false);
 }
 function oMousePos(canvas, evt) {
@@ -23,6 +25,17 @@ function oMousePos(canvas, evt) {
   return { //objeto
     x: Math.round(evt.clientX - ClientRect.left),
     y: Math.round(evt.clientY - ClientRect.top)
+  }
+}
+
+function dibujarCoor(x1, y1) {
+  var lienzo = document.getElementById('lienzo2');
+  var ctx2 = lienzo.getContext("2d");
+  var dibujar = false;
+  if (ctx2) {
+    dibujar = true;
+    ctx2.lineTo(x1, y1);
+    ctx2.stroke();
   }
 }
 var count_click = 0;
