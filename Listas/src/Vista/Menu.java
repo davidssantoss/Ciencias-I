@@ -16,7 +16,7 @@ import javax.swing.JLabel;
  * @author estudiantes
  */
 public class Menu extends JFrame{
-    JLabel etqTit = new JLabel("Que desea realizar con la lista");
+    JLabel etqTit = new JLabel("¿ Que desea realizar con la lista ?");
     JButton btnIns = new JButton("Insertar");
     JButton btnRet = new JButton("Retirar");
     JButton btnImp = new JButton("Imprimir");
@@ -36,14 +36,14 @@ public class Menu extends JFrame{
         c.add(btnBus);
         c.add(btnDib);
         etqTit.setBounds(20, 20, 250, 25);
-        btnIns.setBounds(20, 100, 100, 25);
-        btnRet.setBounds(20, 150, 100, 25);
-        btnImp.setBounds(20, 200, 100, 25);
-        btnBus.setBounds(20, 250, 100, 25);
-        btnDib.setBounds(20, 300, 100, 25);
+        btnIns.setBounds(99, 100, 100, 25);
+        btnRet.setBounds(99, 150, 100, 25);
+        btnImp.setBounds(99, 200, 100, 25);
+        btnBus.setBounds(99, 250, 100, 25);
+        btnDib.setBounds(99, 300, 100, 25);
         
         setVisible(true);
-        setSize(400, 400);
+        setSize(350, 400);
     }
     
     

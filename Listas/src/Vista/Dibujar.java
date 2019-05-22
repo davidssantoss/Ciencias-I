@@ -3,20 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package Vista;
+
+import javax.swing.JFrame;
 
 /**
  *
  * @author estudiantes
  */
-public class Nodo {
-    public int info;
-    public Nodo sig;
-
-    public Nodo(int x) {
-        info = x;
-        sig = null;
-    }
-    
+public class Dibujar extends JFrame{
     
 }

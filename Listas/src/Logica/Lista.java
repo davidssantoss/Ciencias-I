@@ -10,27 +10,67 @@ package Logica;
  * @author estudiantes
  */
 public class Lista {
-    Nodo cabeza;
-
+    public Nodo cabeza;
+    public Nodo q;
+    public Nodo s;
+    
     public Lista() {
         cabeza = null;
     }
-    Nodo insertar(Nodo p, int d){
+    // Inserta un nodo en la lista
+    public Nodo insertar(Nodo p, int d){       
+        q = null;
+        s = p;
+        while (s != null && d > s.info) {            
+            if (s.info == d) {
+                return null;
+            }
+            q = s;
+            s = s.sig;
+        }
+        Nodo n = new Nodo(d);
+        if (q == null) {
+            n.sig = p;
+            p = n;            
+        }
+        else if (s == null) {
+            q.sig = n;
+        }
+        else{
+            n.sig = s;
+            q.sig = n;
+        }
         return p;
     }
-    int retirar(int d){
+    
+    // Retira un nodo de la lista
+    public int retirar(int d){
         return 1;
     }
-    void imprimir(){
+    
+    //Imprime la lista
+    public void imprimir(){
+        q = cabeza;
+        while (q != null) {
+            System.out.println(q.info);
+            q = q.sig;
+        }
+    }
+    public int buscar(int d){
+        q = cabeza;
+        while (q != null && q.info < d) {            
+            q = q.sig;
+        }
+        if (q != null && q.info == d) {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+    
+    // dibuja la lista
+    public void dibujar(){
         
-    }
-    int buscar(int d){
-        return 1;
-    }
-    void dibujar(){
-        
-    }
-    
-    
-    
+    }  
 }
