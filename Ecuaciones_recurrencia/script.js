@@ -5,6 +5,9 @@ function crearInputs() {
 function mostrar() {
   getCondiciones();
   getCoeficientes();
+  convertirEcuacion();
+  var x = convertirEcuacion();
+  console.log(x);
 }
 function crearCoeficientes() {
   var n = parseInt(document.getElementById('cantInp').value);
@@ -47,7 +50,6 @@ function getCondiciones() {
   for (var i = 0; i < n; i++) {
     mCoef[i] = new Array(2);
   }
-  // debugger;
   for (var i = 0; i < n; i++) {
     for (var j = 0; j < 2; j++) {
       var input = "condicion" + i + j;
@@ -55,4 +57,19 @@ function getCondiciones() {
     }
   }
   return mCoef;
+}
+
+var ecuacion = new Array();
+function convertirEcuacion() {
+  var x = getCoeficientes();
+  var exponente = x.length;
+  for (var i = 0; i < x.length ; i++) {
+    if (i != x.length - 1) {
+      exponente -= 1;
+      ecuacion[i] = x[i] + "x^" + exponente;
+    }else {
+      ecuacion[i] = x[i];
+    }
+  }
+  return ecuacion;
 }
