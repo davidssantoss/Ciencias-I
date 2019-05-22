@@ -9,10 +9,20 @@
   </head>
   <body>
     <label>Digite el grado de la ecuacion</label>
-    <input type="text" name="" value="">
-    <button type="button" name="button">Crear campos</button>
-    <div class="txtCreados">
-      
+    <input type="text" id="cantInp" class="txt">
+    <button type="button" class = "btn" onclick="crearInputs()">Crear campos</button>
+    <div class="txts" id="txtCreados">
+      <label>Coeficientes</label><br>
+      <div class="inp" id="coef">
+      </div>
     </div>
+    <div class="txts" id="textos">
+      <label>Condiciones iniciales</label><br>
+      <label>&nbsp; n &nbsp; &nbsp; &nbsp; &nbsp;</label>
+      <label>Valor fn</label><br>
+      <div class="inp" id="condiciones">
+      </div>
+    </div>
+    <button type="button" class = "btn"> Mostrar Ecuacion</button>
   </body>
 </html>
