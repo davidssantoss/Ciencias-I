@@ -39,21 +39,20 @@ function getCoeficientes() {
     var input = "coeficiente" + i;
     coefArr[i] = parseInt(document.getElementById(input).value);
   }
-  console.log(coefArr);
   return coefArr;
 }
 function getCondiciones() {
   var n = parseInt(document.getElementById('cantInp').value);
-  var mCoef = new Array(n);
+  var mCoef = new Array();
   for (var i = 0; i < n; i++) {
-    mCoef[i] = new Array(n);
+    mCoef[i] = new Array(2);
   }
+  // debugger;
   for (var i = 0; i < n; i++) {
     for (var j = 0; j < 2; j++) {
       var input = "condicion" + i + j;
       mCoef[i][j] = parseInt(document.getElementById(input).value);
     }
   }
-  console.log(mCoef);
   return mCoef;
 }
