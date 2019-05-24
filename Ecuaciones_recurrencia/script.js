@@ -80,7 +80,6 @@ function calcularRaices() {
   var raiz = new Array();
   var num, den;
   var y = nerdamer('roots(' + ec + ')');
-  console.log(0*6);
   for (var i = 0; i < y.symbol.elements.length; i++) {
     if (y.symbol.elements[i].value == "i") {
       alert("son raices imaginarias");
@@ -95,6 +94,7 @@ function calcularRaices() {
   }
   return raiz
 }
+
 function establecerFn() {
   var n = getN();
   var valorFn = getFn();
@@ -106,7 +106,6 @@ function establecerFn() {
       // fn= c1r^n +c2nr^n
       console.log("son raices con multiplicidad");
       fn[i] = c + "* " + (raiz[i] ** n[i]) + " + " + c + "* " + n[i] * (raiz[i] ** n[i]) + " = " + valorFn[i];
-      console.log(fn);
     }else {
       // fn = c1r1^n + c2r2^n
     }
@@ -121,7 +120,6 @@ function getFn() {
       arr2[i] = n[i][j];
     }
   }
-  console.log(arr2);
   return arr2;
 }
 
@@ -136,3 +134,4 @@ function getN() {
   }
   return arr;
 }
+// @link gauss: http://platea.pntic.mec.es/jcarias/mat/algebra/sistemas/01gausshtml.htm
