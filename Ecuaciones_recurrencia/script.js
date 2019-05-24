@@ -100,19 +100,22 @@ function establecerFn() {
   var n = getN();
   var valorFn = getFn();
   var raiz = calcularRaices();
+  var grado = parseInt(document.getElementById('cantInp').value);
   //relacion entre condiciones iniciales y raices
   // link https://introcs.cs.princeton.edu/java/95linear/GaussJordanElimination.java.html
-  
-  for (var i = 0; i < n.length; i++) {
-    if (raiz[0] == raiz[i]) {
-      // fn= c1r^n +c2nr^n
-      console.log("son raices con multiplicidad");
-      fn[i] = [(raiz[i] ** n[i]), n[i] * (raiz[i] ** n[i]), valorFn[i]];
-    }else {
-      // fn = c1r1^n + c2r2^n
-    }
-  }
-  console.log(fn);
+  console.log(raiz);
+  multipl(valorFn, n, raiz, grado);
+  // console.log(obj);
+  // for (var i = 0; i < n.length; i++) {
+  //   if (raiz[0] == raiz[i]) {
+  //     // fn= c1r^n +c2nr^n
+  //     console.log("son raices con multiplicidad");
+  //     fn[i] = [(raiz[i] ** n[i]), n[i] * (raiz[i] ** n[i]), valorFn[i]];
+  //   }else {
+  //     // fn = c1r1^n + c2r2^n
+  //   }
+  // }
+  // console.log(fn);
 }
 
 var arr2 = new Array();
@@ -136,6 +139,33 @@ function getN() {
     }
   }
   return arr;
+}
+
+Array.prototype.count_value = function(){
+
+  var count = {};
+  for(var i = 0; i < this.length; i++){
+  if(!(this[i] in count))count[this[i]] = 0;
+  count[this[i]]++;
+  }
+  return count;
+}
+
+function multipl(N, b, raiz, grado) {
+  obj = raiz.count_value();
+  var exponent = 0;
+  var terN, ternR;
+  if (raiz.length == 1 && grado > 1) {
+    for (var i = 0; i < grado; i++) {
+      debugger;
+      terN = Math.pow(N[i], exponent);
+      ternR = Math.pow(raiz, N[i])
+      console.log(terN);
+      console.log(ternR);
+      exponent +=1;
+    }
+  }
+
 }
 
 function gaussJordan(matrizEcu, arregloB) {
