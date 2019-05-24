@@ -87,7 +87,8 @@ function realizarFuncion() {
       console.log("son raices reales");
       num = y.symbol.elements[i].multiplier.num;
       den = y.symbol.elements[i].multiplier.den;
-      raiz[i] = num/den;
+      raiz[i] = parseFloat((num / den).toFixed(3));
+
     }else{
       console.log("no son raices reales");
     }
