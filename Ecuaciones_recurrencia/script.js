@@ -6,8 +6,8 @@ function mostrar() {
   getCondiciones();
   getCoeficientes();
   convertirEcuacion();
-  var x = convertirEcuacion();
-  realizarFuncion();
+  calcularRaices();
+  establecerFn();
 }
 function crearCoeficientes() {
   var n = parseInt(document.getElementById('cantInp').value);
@@ -46,21 +46,21 @@ function getCoeficientes() {
 }
 function getCondiciones() {
   var n = parseInt(document.getElementById('cantInp').value);
-  var mCoef = new Array();
+  var mCond = new Array();
   for (var i = 0; i < n; i++) {
-    mCoef[i] = new Array(2);
+    mCond[i] = new Array(2);
   }
   for (var i = 0; i < n; i++) {
     for (var j = 0; j < 2; j++) {
       var input = "condicion" + i + j;
-      mCoef[i][j] = parseInt(document.getElementById(input).value);
+      mCond[i][j] = parseInt(document.getElementById(input).value);
     }
   }
-  return mCoef;
+  return mCond;
 }
 
 var ecuacion = new Array();
-var strEcuacion = new Array();
+
 function convertirEcuacion() {
   var x = getCoeficientes();
   var exponente = x.length;
@@ -72,14 +72,15 @@ function convertirEcuacion() {
       ecuacion[i] = x[i];
     }
   }
-  // ecuacion.join('');
   return ecuacion;
 }
-function realizarFuncion() {
+
+function calcularRaices() {
   var ec = ecuacion.join('');
   var raiz = new Array();
   var num, den;
   var y = nerdamer('roots(' + ec + ')');
+  console.log(0*6);
   for (var i = 0; i < y.symbol.elements.length; i++) {
     if (y.symbol.elements[i].value == "i") {
       alert("son raices imaginarias");
@@ -88,10 +89,50 @@ function realizarFuncion() {
       num = y.symbol.elements[i].multiplier.num;
       den = y.symbol.elements[i].multiplier.den;
       raiz[i] = parseFloat((num / den).toFixed(3));
-
     }else{
       console.log("no son raices reales");
     }
   }
-  console.log(raiz);
+  return raiz
+}
+function establecerFn() {
+  var n = getN();
+  var valorFn = getFn();
+  var raiz = calcularRaices();
+  var fn = new Array();
+  var c = "c";
+  for (var i = 0; i < raiz.length; i++) {
+    if (raiz[0] == raiz[i]) {
+      // fn= c1r^n +c2nr^n
+      console.log("son raices con multiplicidad");
+      fn[i] = c + "* " + (raiz[i] ** n[i]) + " + " + c + "* " + n[i] * (raiz[i] ** n[i]) + " = " + valorFn[i];
+      console.log(fn);
+    }else {
+      // fn = c1r1^n + c2r2^n
+    }
+  }
+}
+
+var arr2 = new Array();
+function getFn() {
+  var n = getCondiciones();
+  for (var i = 0; i < n.length; i++) {
+    for (var j = 1; j < 2; j++) {
+      arr2[i] = n[i][j];
+    }
+  }
+  console.log(arr2);
+  return arr2;
+}
+
+
+var arr = new Array();
+function getN() {
+  var n = getCondiciones();
+  for (var i = 0; i < n.length; i++) {
+    for (var j = 0; j < 1; j++) {
+      arr[i] = n[i][j];
+    }
+  }
+  return arr;
 }
