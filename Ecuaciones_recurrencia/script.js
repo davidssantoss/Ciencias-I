@@ -95,21 +95,24 @@ function calcularRaices() {
   return raiz
 }
 
+var fn = new Array();
 function establecerFn() {
   var n = getN();
   var valorFn = getFn();
   var raiz = calcularRaices();
-  var fn = new Array();
-  var c = "c";
-  for (var i = 0; i < raiz.length; i++) {
+  //relacion entre condiciones iniciales y raices
+  // link https://introcs.cs.princeton.edu/java/95linear/GaussJordanElimination.java.html
+  
+  for (var i = 0; i < n.length; i++) {
     if (raiz[0] == raiz[i]) {
       // fn= c1r^n +c2nr^n
       console.log("son raices con multiplicidad");
-      fn[i] = c + "* " + (raiz[i] ** n[i]) + " + " + c + "* " + n[i] * (raiz[i] ** n[i]) + " = " + valorFn[i];
+      fn[i] = [(raiz[i] ** n[i]), n[i] * (raiz[i] ** n[i]), valorFn[i]];
     }else {
       // fn = c1r1^n + c2r2^n
     }
   }
+  console.log(fn);
 }
 
 var arr2 = new Array();
@@ -133,5 +136,13 @@ function getN() {
     }
   }
   return arr;
+}
+
+function gaussJordan(matrizEcu, arregloB) {
+  const bLen = arregloB.length;
+  var matrizAumentada = new Array();
+  for (var i = 0; i < matrizEcu.length; i++) {
+    matrizAumentada[i] = 1;
+  }
 }
 // @link gauss: http://platea.pntic.mec.es/jcarias/mat/algebra/sistemas/01gausshtml.htm
