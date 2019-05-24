@@ -7,7 +7,7 @@ function mostrar() {
   getCoeficientes();
   convertirEcuacion();
   var x = convertirEcuacion();
-  console.log(x);
+  realizarFuncion();
 }
 function crearCoeficientes() {
   var n = parseInt(document.getElementById('cantInp').value);
@@ -60,16 +60,37 @@ function getCondiciones() {
 }
 
 var ecuacion = new Array();
+var strEcuacion = new Array();
 function convertirEcuacion() {
   var x = getCoeficientes();
   var exponente = x.length;
   for (var i = 0; i < x.length ; i++) {
     if (i != x.length - 1) {
       exponente -= 1;
-      ecuacion[i] = x[i] + "x^" + exponente;
+      ecuacion[i] = x[i] + "x^" + exponente + "+";
     }else {
       ecuacion[i] = x[i];
     }
   }
+  // ecuacion.join('');
   return ecuacion;
+}
+function realizarFuncion() {
+  var ec = ecuacion.join('');
+  var raiz = new Array();
+  var num, den;
+  var y = nerdamer('roots(' + ec + ')');
+  for (var i = 0; i < y.symbol.elements.length; i++) {
+    if (y.symbol.elements[i].value == "i") {
+      alert("son raices imaginarias");
+    }else if (y.symbol.elements[i].value == "#") {
+      console.log("son raices reales");
+      num = y.symbol.elements[i].multiplier.num;
+      den = y.symbol.elements[i].multiplier.den;
+      raiz[i] = num/den;
+    }else{
+      console.log("no son raices reales");
+    }
+  }
+  console.log(raiz);
 }
