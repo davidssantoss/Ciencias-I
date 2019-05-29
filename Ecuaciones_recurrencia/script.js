@@ -182,6 +182,8 @@ function sistemadeEcu(N, b, raiz, grado) {
         terN[i][j] = Math.pow(raiz[j], N[i]);
       }
     }
+    var bAr = getN();    
+    console.log(gaussJordan(terN, bAr) );
     return terN;
   }
   //if una raiz y dos raices iguales
@@ -189,12 +191,72 @@ function sistemadeEcu(N, b, raiz, grado) {
 function uno(valor) {
   return valor = 1;
 }
-
+const nn = 0;
+const a  = new Array();
+const EPSILON = 1e-8;
 function gaussJordan(matrizEcu, arregloB) {
   const bLen = arregloB.length;
-  var matrizAumentada = new Array();
+  var matrizAumentada = new Array(bLen);
   for (var i = 0; i < matrizEcu.length; i++) {
-    matrizAumentada[i] = 1;
+    matrizAumentada[i] = new Array(bLen + bLen + 1);
+  }
+  for (var i = 0; i < bLen; i++) {
+    for (var j = 0; j < bLen; j++) {
+      matrizAumentada[i][j] = matrizEcu[i][j];
+    }
+  }
+  for (var i = 0; i < bLen; i++) {
+    matrizAumentada[i][bLen + i] = 1.0;    
+  }
+  for(var i = 0; i < bLen; i++){
+    matrizAumentada[i][bLen + bLen];
+  }
+  resolver();
+  console.log("check(matrizEcu, arregloB)");  
+}
+function resolver() {
+  for (var p = 0; p < nn; p++) {
+    var max = p;
+    for (var i = p + 1; i < N; i++) {
+      if (Math.abs(a[i][p]) > Math.abs(a[max][p]) ) {
+        max = i;
+      }
+    }
+    cambiarFilas(p, max);
+    if (Math.abs(a[p][p] <= EPSILON)) {
+      continue;      
+    }
+    pivot(p, p);
   }
 }
+function cambiarFilas(fila1, fila2) {
+  var temp = new Array(a[row1]);
+  a[fila1] = a[fila2];
+  a[fila2] = temp;
+}
+function pivot(p, q) {
+  for (var i = 0; i < nn; i++) {
+    var alpha = a[i][q] / a[p][q];
+    for (var j = 0; j < nn + nn; j++) {
+      if (i != p && j != q) {
+        a[i][j] -= alpha * a[p][j];
+      }      
+    }    
+  }
+  for (var i = 0; i < nn; i++) {
+    if (i != p) {
+      a[i][q] = 0.0;
+    }
+  }
+  for (var j = 0; j < nn + nn; j++) {
+    if (j != q) {
+      a[p][j] /= a[p][q];
+    }
+  }
+  a[p][q] = 1.0;
+}
+//faltaria el metodo mostrar() del link bg #fff
+
+
 // @link gauss: http://platea.pntic.mec.es/jcarias/mat/algebra/sistemas/01gausshtml.htm
+// @link gauss: https://www.geeksforgeeks.org/program-for-gauss-jordan-elimination-method/
