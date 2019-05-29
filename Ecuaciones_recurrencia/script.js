@@ -154,18 +154,23 @@ Array.prototype.count_value = function(){
 function multipl(N, b, raiz, grado) {
   obj = raiz.count_value();
   var exponent = 0;
-  var terN, ternR;
+  var terN = new Array();
+  for (let i = 0; i < grado; i++) {
+    terN[i] = new Array(grado);    
+  } 
   if (raiz.length == 1 && grado > 1) {
-    for (var i = 0; i < grado; i++) {
-      debugger;
-      terN = Math.pow(N[i], exponent);
-      ternR = Math.pow(raiz, N[i])
-      console.log(terN);
-      console.log(ternR);
-      exponent +=1;
-    }
+    for (var i = 0; i < grado; i++) {      
+      for (let j = 0; j < grado; j++) {
+        // debugger;                
+        terN[i][j] = Math.pow(N[i], exponent) * Math.pow(raiz, N[i]);
+        exponent +=1;
+      }
+      if (exponent == grado) {
+        exponent = 0;        
+      }      
+    }    
   }
-
+  console.log(terN);
 }
 
 function gaussJordan(matrizEcu, arregloB) {
