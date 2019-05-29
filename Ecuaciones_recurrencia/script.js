@@ -168,8 +168,12 @@ function multipl(N, b, raiz, grado) {
       if (exponent == grado) {
         exponent = 0;        
       }      
-    }    
+    }
+    return terN;  
   }
+  //Un if si las raices son 2 iguales Hacerla con multiplicidad
+  //otro if si las raices son diferentes
+  //otro if si las raices tienen una raiz diferente y otras 2 raices iguales
   console.log(terN);
 }
 
