@@ -105,17 +105,6 @@ function establecerFn() {
   // link https://introcs.cs.princeton.edu/java/95linear/GaussJordanElimination.java.html
   console.log(raiz);
   multipl(valorFn, n, raiz, grado);
-  // console.log(obj);
-  // for (var i = 0; i < n.length; i++) {
-  //   if (raiz[0] == raiz[i]) {
-  //     // fn= c1r^n +c2nr^n
-  //     console.log("son raices con multiplicidad");
-  //     fn[i] = [(raiz[i] ** n[i]), n[i] * (raiz[i] ** n[i]), valorFn[i]];
-  //   }else {
-  //     // fn = c1r1^n + c2r2^n
-  //   }
-  // }
-  // console.log(fn);
 }
 
 var arr2 = new Array();
@@ -153,6 +142,8 @@ Array.prototype.count_value = function(){
 
 function multipl(N, b, raiz, grado) {
   obj = raiz.count_value();
+  console.log(obj);
+  
   var exponent = 0;
   var terN = new Array();
   for (let i = 0; i < grado; i++) {
@@ -168,13 +159,32 @@ function multipl(N, b, raiz, grado) {
       if (exponent == grado) {
         exponent = 0;        
       }      
-    }
+    }    
     return terN;  
+  }
+  for(var i = 0; i < raiz.length; i++){
+    console.log(obj[i]);
+    
+  }
+  for (var props in obj) {
+    console.log(props);
+    if (props > 2) {
+      console.log("Entra!");
+      
+      for (let i = 0; i < grado; i++) {
+        for (let j = 0; j < grado; j++) {
+          terN[i][j] = Math.pow(N[i], exponent) * Math.pow(raiz, N[i]);
+          exponent +=1;          
+        }        
+      }
+      console.log(terN);
+            
+    }    
   }
   //Un if si las raices son 2 iguales Hacerla con multiplicidad
   //otro if si las raices son diferentes
   //otro if si las raices tienen una raiz diferente y otras 2 raices iguales
-  console.log(terN);
+  // console.log(terN);
 }
 
 function gaussJordan(matrizEcu, arregloB) {
