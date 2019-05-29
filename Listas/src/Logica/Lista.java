@@ -5,72 +5,92 @@
  */
 package Logica;
 
+import java.awt.Graphics;
+
 /**
  *
- * @author estudiantes
+ * @author David
  */
 public class Lista {
-    public Nodo cabeza;
-    public Nodo q;
-    public Nodo s;
-    
+    Nodo cab;
+
     public Lista() {
-        cabeza = null;
     }
-    // Inserta un nodo en la lista
-    public Nodo insertar(Nodo p, int d){       
-        q = null;
-        s = p;
-        while (s != null && d > s.info) {            
-            if (s.info == d) {
-                return null;
+    public void insertar(Nodo p, Nodo q, int n){
+        Nodo nuevo;
+        nuevo = new Nodo(n);
+        nuevo.sig = q;
+        if (p != null) {
+            p.sig = nuevo;
+        }else{
+            cab = nuevo;
+        }
+    }
+    public int mantener(int n){
+        Nodo p, q;
+        boolean encontro;
+        p = null;
+        q = cab;
+        encontro = false;
+        while (q != null && !encontro) {            
+            if (n > q.info) {
+                p = q;
+                q = q.sig;
+            }else{
+                encontro = true;
             }
-            q = s;
-            s = s.sig;
         }
-        Nodo n = new Nodo(d);
-        if (q == null) {
-            n.sig = p;
-            p = n;            
+        if (encontro) {
+            if (n == q.info) {
+                return -1;
+            }else{
+                insertar(p, q, n);
+            }
+        }else{
+            insertar(p, q, n);            
         }
-        else if (s == null) {
-            q.sig = n;
-        }
-        else{
-            n.sig = s;
-            q.sig = n;
-        }
-        return p;
-    }
-    
-    // Retira un nodo de la lista
-    public int retirar(int d){
         return 1;
     }
-    
-    //Imprime la lista
-    public void imprimir(){
-        q = cabeza;
-        while (q != null) {
-            System.out.println(q.info);
-            q = q.sig;
+    public Nodo buscar(int n){
+        Nodo p = cab;
+        while (p != null) {            
+            if (p.info == n) {
+                return p;
+            }
+            if (n > p.info) {
+                p = p.sig;
+            }else{
+                return null;
+            }
         }
+        return null;
     }
-    public int buscar(int d){
-        q = cabeza;
-        while (q != null && q.info < d) {            
-            q = q.sig;
-        }
-        if (q != null && q.info == d) {
-            return 1;
-        }
-        else{
+    public int retirar(Nodo p){
+        Nodo aux;
+        if (p == null) {
             return -1;
         }
+        if (p == cab) {
+            cab = p.sig;
+        }
+        else{
+            aux = cab;
+            while (aux.sig != p) {                
+                aux = aux.sig;
+            }
+            aux.sig = p.sig;
+        }
+        return 1;
     }
-    
-    // dibuja la lista
-    public void dibujar(){
-        
-    }  
+    public void listar(Graphics g){
+        Nodo p = cab;
+        int fila = 0;
+        while (p != null) {
+            g.drawRect(150 + fila * 45, 100, 30, 30);
+            g.drawLine(180 + fila * 45, 115, 200 + fila * 45, 115);
+            g.drawString(""+p.info, 150 + fila * 45, 100);
+            p = p.sig;
+            fila++;
+        }
+    }
 }

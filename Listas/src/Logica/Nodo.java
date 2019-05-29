@@ -7,16 +7,15 @@ package Logica;
 
 /**
  *
- * @author estudiantes
+ * @author David
  */
 public class Nodo {
-    public int info;
-    public Nodo sig;
+    int info;
 
-    public Nodo(int x) {
-        info = x;
-        sig = null;
+    public Nodo(int info) {
+        this.info = info;
     }
+    Nodo sig;
     
     
 }
