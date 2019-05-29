@@ -162,10 +162,6 @@ function multipl(N, b, raiz, grado) {
     }    
     return terN;  
   }
-  for(var i = 0; i < raiz.length; i++){
-    console.log(obj[i]);
-    
-  }
   for (var props in obj) {
     console.log(props);
     if (props > 2) {
