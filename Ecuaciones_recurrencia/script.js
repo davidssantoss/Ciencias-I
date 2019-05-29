@@ -101,10 +101,8 @@ function establecerFn() {
   var valorFn = getFn();
   var raiz = calcularRaices();
   var grado = parseInt(document.getElementById('cantInp').value);
-  //relacion entre condiciones iniciales y raices
   // link https://introcs.cs.princeton.edu/java/95linear/GaussJordanElimination.java.html
-  console.log(raiz);
-  multipl(valorFn, n, raiz, grado);
+  sistemadeEcu(valorFn, n, raiz, grado);
 }
 
 var arr2 = new Array();
@@ -140,7 +138,7 @@ Array.prototype.count_value = function(){
   return count;
 }
 
-function multipl(N, b, raiz, grado) {
+function sistemadeEcu(N, b, raiz, grado) {
   obj = raiz.count_value();
   console.log(obj);
   
@@ -149,10 +147,10 @@ function multipl(N, b, raiz, grado) {
   for (let i = 0; i < grado; i++) {
     terN[i] = new Array(grado);    
   } 
+  //una raiz de un polinomio de grado mayor a 1
   if (raiz.length == 1 && grado > 1) {
     for (var i = 0; i < grado; i++) {      
-      for (let j = 0; j < grado; j++) {
-        // debugger;                
+      for (var j = 0; j < grado; j++) {                        
         terN[i][j] = Math.pow(N[i], exponent) * Math.pow(raiz, N[i]);
         exponent +=1;
       }
@@ -162,25 +160,34 @@ function multipl(N, b, raiz, grado) {
     }    
     return terN;  
   }
-  for (var props in obj) {
-    console.log(props);
-    if (props > 2) {
-      console.log("Entra!");
-      
-      for (let i = 0; i < grado; i++) {
-        for (let j = 0; j < grado; j++) {
-          terN[i][j] = Math.pow(N[i], exponent) * Math.pow(raiz, N[i]);
-          exponent +=1;          
-        }        
+  var cantRaicesIguales = Object.values(obj);
+  var raicesDiferentes = Object.keys(obj);
+  // Raices son 2 iguales
+  if (cantRaicesIguales == 2 | cantRaicesIguales >= 3) {
+    for (var i = 0; i < grado; i++) {
+      for (var j = 0; j < grado; j++) {
+        terN[i][j] = Math.pow(N[i], exponent) * Math.pow(raiz[i], N[i]);
+        exponent +=1;          
       }
-      console.log(terN);
-            
-    }    
+      if (exponent == grado) {
+        exponent = 0;        
+      }       
+    }
+    return terN;  
   }
-  //Un if si las raices son 2 iguales Hacerla con multiplicidad
-  //otro if si las raices son diferentes
-  //otro if si las raices tienen una raiz diferente y otras 2 raices iguales
-  // console.log(terN);
+  //raices no multiplicidad
+  if (cantRaicesIguales.every(uno) == true) {
+    for (var i = 0; i < grado; i++) {
+      for (var j = 0; j < grado; j++) {
+        terN[i][j] = Math.pow(raiz[j], N[i]);
+      }
+    }
+    return terN;
+  }
+  //if una raiz y dos raices iguales
+}
+function uno(valor) {
+  return valor = 1;
 }
 
 function gaussJordan(matrizEcu, arregloB) {
