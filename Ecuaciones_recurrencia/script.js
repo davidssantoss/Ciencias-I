@@ -141,7 +141,6 @@ Array.prototype.count_value = function(){
 function sistemadeEcu(N, b, raiz, grado) {
   obj = raiz.count_value();
   console.log(obj);
-  
   var exponent = 0;
   var terN = new Array();
   for (let i = 0; i < grado; i++) {
@@ -161,7 +160,6 @@ function sistemadeEcu(N, b, raiz, grado) {
     return terN;  
   }
   var cantRaicesIguales = Object.values(obj);
-  var raicesDiferentes = Object.keys(obj);
   // Raices son 2 iguales
   if (cantRaicesIguales == 2 | cantRaicesIguales >= 3) {
     for (var i = 0; i < grado; i++) {
@@ -179,84 +177,102 @@ function sistemadeEcu(N, b, raiz, grado) {
   if (cantRaicesIguales.every(uno) == true) {
     for (var i = 0; i < grado; i++) {
       for (var j = 0; j < grado; j++) {
-        terN[i][j] = Math.pow(raiz[j], N[i]);
+        terN[i][j] = Math.pow(raiz[j], N[i]),  b[i];                
       }
     }
-    var bAr = getN();    
-    console.log(gaussJordan(terN, bAr) );
+    var ctes = mAumentada(terN, grado, b);
+    calcularEc(ctes, grado);
     return terN;
   }
+  var ctes = mAumentada(terN, grado, b);
+  calcularEc(ctes, grado);
   //if una raiz y dos raices iguales
+}
+function mAumentada(matriz, grado, vectorSol) {
+  console.log(matriz);  
+  var matrizAum = new Array();
+  for(var k = 0; k < grado; k++){
+    matrizAum[k] = new Array(grado + 1);
+  }  
+  for(var i = 0; i < grado; i++){
+    for(var j = 0; j < grado + 1; j++){
+        matrizAum[i][j] = matriz[i][j];         
+        if (j == grado) {
+          matrizAum[i][j] = vectorSol[i];
+        }
+    }
+  }
+  return matrizAum
 }
 function uno(valor) {
   return valor = 1;
 }
-const nn = 0;
-const a  = new Array();
-const EPSILON = 1e-8;
-function gaussJordan(matrizEcu, arregloB) {
-  const bLen = arregloB.length;
-  var matrizAumentada = new Array(bLen);
-  for (var i = 0; i < matrizEcu.length; i++) {
-    matrizAumentada[i] = new Array(bLen + bLen + 1);
-  }
-  for (var i = 0; i < bLen; i++) {
-    for (var j = 0; j < bLen; j++) {
-      matrizAumentada[i][j] = matrizEcu[i][j];
-    }
-  }
-  for (var i = 0; i < bLen; i++) {
-    matrizAumentada[i][bLen + i] = 1.0;    
-  }
-  for(var i = 0; i < bLen; i++){
-    matrizAumentada[i][bLen + bLen];
-  }
-  resolver();
-  console.log("check(matrizEcu, arregloB)");  
-}
-function resolver() {
-  for (var p = 0; p < nn; p++) {
-    var max = p;
-    for (var i = p + 1; i < N; i++) {
-      if (Math.abs(a[i][p]) > Math.abs(a[max][p]) ) {
-        max = i;
+//Eliminacion por Gaus Jordan 
+function gauss_Jordan(a, n){
+  var i, j, k = 0, c, flag = 0, m = 0;
+  var pro = 0;
+  for(i = 0; i < n; i++){
+    if (a[i][i] == 0) {
+      c = 1;
+      while(a[i + c][i] == 0 && (i +c) < n){
+        c++;
+      }
+      if ((i + c) == n) {
+        flag = 1;
+        break;
+      }
+      for(j = 1, k = 0; k <= n; k++){
+        var temp = a[j][k];
+        a[j][k] = a[j + c][k];
+        a[j + c][k] = temp;
       }
     }
-    cambiarFilas(p, max);
-    if (Math.abs(a[p][p] <= EPSILON)) {
-      continue;      
-    }
-    pivot(p, p);
-  }
-}
-function cambiarFilas(fila1, fila2) {
-  var temp = new Array(a[row1]);
-  a[fila1] = a[fila2];
-  a[fila2] = temp;
-}
-function pivot(p, q) {
-  for (var i = 0; i < nn; i++) {
-    var alpha = a[i][q] / a[p][q];
-    for (var j = 0; j < nn + nn; j++) {
-      if (i != p && j != q) {
-        a[i][j] -= alpha * a[p][j];
-      }      
-    }    
-  }
-  for (var i = 0; i < nn; i++) {
-    if (i != p) {
-      a[i][q] = 0.0;
+    for(j = 0; j < n; j++){
+      if (i != j) {
+        var p = a[j][i] / a[i][i];
+        for(k = 0; k <=n; k++){
+          a[j][k] = a[j][k] - (a[i][k]) * p;
+        }
+      }
     }
   }
-  for (var j = 0; j < nn + nn; j++) {
-    if (j != q) {
-      a[p][j] /= a[p][q];
+  return flag;
+}
+function mostarResultado(a, n, flag){
+  console.log("El resultado es: ");
+  if (flag == 2) {
+    console.log("Existe infinitas soluciones");    
+  }
+  else if (flag == 3){
+    console.log("no existe solucion");    
+  }
+  else{
+    for(var i = 0; i < n; i++){
+      console.log(a[i][n] / a[i][i] + " ");      
+    }
+  }  
+}
+function verificarMatriz(a, n, flag) {
+  var i, j, sum;
+  flag = 3;
+  for(i = 0; i < n; i++){
+    sum = 0;
+    for(j = 0; j < n; j++){
+      sum = suma + a[i][j];
+    }
+    if (sum == a[i][j]) {
+      flag = 2;
     }
   }
-  a[p][q] = 1.0;
+  return flag;
 }
-//faltaria el metodo mostrar() del link bg #fff
-
-
-// @link gauss: http://platea.pntic.mec.es/jcarias/mat/algebra/sistemas/01gausshtml.htm
+function calcularEc(matriz, grado){
+  var flag = 0;
+  flag = gauss_Jordan(matriz, grado);
+  if (flag == 1) {
+    flag = verificarMatriz(matriz, grado, flag);
+  }
+  mostarResultado(matriz, grado, flag);
+}
 // @link gauss: https://www.geeksforgeeks.org/program-for-gauss-jordan-elimination-method/
+//Mostrar la ecuacion resultante
