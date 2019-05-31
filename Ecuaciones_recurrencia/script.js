@@ -60,7 +60,6 @@ function getCondiciones() {
 }
 
 var ecuacion = new Array();
-
 function convertirEcuacion() {
   var x = getCoeficientes();
   var exponente = x.length;
@@ -101,7 +100,6 @@ function establecerFn() {
   var valorFn = getFn();
   var raiz = calcularRaices();
   var grado = parseInt(document.getElementById('cantInp').value);
-  // link https://introcs.cs.princeton.edu/java/95linear/GaussJordanElimination.java.html
   sistemadeEcu(valorFn, n, raiz, grado);
 }
 
@@ -115,8 +113,6 @@ function getFn() {
   }
   return arr2;
 }
-
-
 var arr = new Array();
 function getN() {
   var n = getCondiciones();
@@ -127,7 +123,6 @@ function getN() {
   }
   return arr;
 }
-
 Array.prototype.count_value = function(){
 
   var count = {};
@@ -137,29 +132,37 @@ Array.prototype.count_value = function(){
   }
   return count;
 }
-
+function ifRaizUndefined(raiz){
+  if (raiz != 'undefined') {
+    return true;
+  }
+}
 function sistemadeEcu(N, b, raiz, grado) {
   obj = raiz.count_value();
-  console.log(obj);
+  var cantRaicesIguales2 = Object.keys(obj);
+  var filtrado = raiz.filter(ifRaizUndefined);
+  console.log(filtrado);  
   var exponent = 0;
   var terN = new Array();
   for (let i = 0; i < grado; i++) {
     terN[i] = new Array(grado);    
   } 
   //una raiz de un polinomio de grado mayor a 1
-  if (raiz.length == 1 && grado > 1) {
+  if (filtrado.length == 1 && grado > 1) {
     for (var i = 0; i < grado; i++) {      
       for (var j = 0; j < grado; j++) {                        
-        terN[i][j] = Math.pow(N[i], exponent) * Math.pow(raiz, N[i]);
+        terN[i][j] = Math.pow(N[i], exponent) * Math.pow(filtrado, N[i]);
         exponent +=1;
       }
       if (exponent == grado) {
         exponent = 0;        
       }      
-    }    
+    }
+    var ctes = mAumentada(terN, grado, b);
+    calcularEc(ctes, grado);
     return terN;  
   }
-  var cantRaicesIguales = Object.values(obj);
+  var cantRaicesIguales = Object.values(obj);      
   // Raices son 2 iguales
   if (cantRaicesIguales == 2 | cantRaicesIguales >= 3) {
     for (var i = 0; i < grado; i++) {
@@ -169,7 +172,9 @@ function sistemadeEcu(N, b, raiz, grado) {
       }
       if (exponent == grado) {
         exponent = 0;        
-      }       
+      }
+      var ctes = mAumentada(terN, grado, b);
+      calcularEc(ctes, grado);    
     }
     return terN;  
   }
@@ -177,7 +182,7 @@ function sistemadeEcu(N, b, raiz, grado) {
   if (cantRaicesIguales.every(uno) == true) {
     for (var i = 0; i < grado; i++) {
       for (var j = 0; j < grado; j++) {
-        terN[i][j] = Math.pow(raiz[j], N[i]),  b[i];                
+        terN[i][j] = Math.pow(filtrado[j], N[i]),  b[i];                
       }
     }
     var ctes = mAumentada(terN, grado, b);
@@ -186,7 +191,7 @@ function sistemadeEcu(N, b, raiz, grado) {
   }
   var ctes = mAumentada(terN, grado, b);
   calcularEc(ctes, grado);
-  //if una raiz y dos raices iguales
+  //if una raiz y dos raices iguales        
 }
 function mAumentada(matriz, grado, vectorSol) {
   console.log(matriz);  
@@ -238,7 +243,10 @@ function gauss_Jordan(a, n){
   }
   return flag;
 }
+var constantes = new Array();
 function mostarResultado(a, n, flag){
+  var raiz = calcularRaices();  
+  var filtrado = raiz.filter(ifRaizUndefined);
   console.log("El resultado es: ");
   if (flag == 2) {
     console.log("Existe infinitas soluciones");    
@@ -246,11 +254,23 @@ function mostarResultado(a, n, flag){
   else if (flag == 3){
     console.log("no existe solucion");    
   }
-  else{
+  
+  if(filtrado.length == 1){
+    for(var i = 0; i < n; i++){
+      // console.log(a[i][n] / a[i][i] + " ");      
+      constantes[i] = (a[i][n] / a[i][i] + " * " + filtrado+ "^ " + "n" + i);
+      console.log(constantes);      
+      document.getElementById('ecuacion').value = constantes;
+    }
+  }
+  else if(filtrado.length > 1){
     for(var i = 0; i < n; i++){
       console.log(a[i][n] / a[i][i] + " ");      
+      constantes[i] = (a[i][n] / a[i][i] + " * " + filtrado[i]+ "^ " + "n");
+      console.log(constantes);      
+      document.getElementById('ecuacion').value = constantes;
     }
-  }  
+  }        
 }
 function verificarMatriz(a, n, flag) {
   var i, j, sum;
@@ -274,5 +294,3 @@ function calcularEc(matriz, grado){
   }
   mostarResultado(matriz, grado, flag);
 }
-// @link gauss: https://www.geeksforgeeks.org/program-for-gauss-jordan-elimination-method/
-//Mostrar la ecuacion resultante
