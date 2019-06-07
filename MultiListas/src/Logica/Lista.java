@@ -10,6 +10,14 @@ package Logica;
  * @author estudiantes
  */
 public class Lista {
-    Nodo cab;
+    NodoVer cab;
+    NodoHor n;
+
+    public Lista() {
+    }
+    
+    public void insertarHor(NodoHor p, NodoHor q, String s, int x){
+        
+    }
     
 }
