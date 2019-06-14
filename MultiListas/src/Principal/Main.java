@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import Logica.Lista;
 import Vista.Menu;
 
 /**
@@ -14,5 +15,7 @@ import Vista.Menu;
 public class Main {
     public static void main(String[] args) {
         Menu m = new Menu();
+        Lista l = new Lista();
+        l.insertarHor("David", 12);
     }
 }
